@@ -19,6 +19,23 @@ public class IntSetTest
 	}
 
 	@Test
+	public void addThroughVarArgs() throws Exception
+	{
+		final IntSet set = new IntSet();
+		final int[] values = {Integer.MIN_VALUE, -1, 0, 1, Integer.MAX_VALUE};
+
+		for (int value : values) {
+			assertFalse(set.contains(value));
+		}
+
+		set.add(values);
+
+		for (int value : values) {
+			assertTrue(set.contains(value));
+		}
+	}
+
+	@Test
 	public void remove() throws Exception
 	{
 		final IntSet set = new IntSet();
@@ -28,6 +45,25 @@ public class IntSetTest
 		assertTrue(set.contains(value));
 		set.remove(value);
 		assertFalse(set.contains(value));
+	}
+
+	@Test
+	public void removeThroughVarArgs() throws Exception
+	{
+		final IntSet set = new IntSet();
+		final int[] values = {Integer.MIN_VALUE, -1, 0, 1, Integer.MAX_VALUE};
+
+		set.add(values);
+
+		for (int value : values) {
+			assertTrue(set.contains(value));
+		}
+
+		set.remove(values);
+
+		for (int value : values) {
+			assertFalse(set.contains(value));
+		}
 	}
 
 	@Test

@@ -44,6 +44,17 @@ public class IntSet
 	}
 
 	/**
+	 * @param values
+	 * 		Values to {@link IntSet#add(int) add}
+	 */
+	public void add(final int... values)
+	{
+		for (int value : values) {
+			this.add(value);
+		}
+	}
+
+	/**
 	 * Removes value from set if such value is in set.
 	 *
 	 * @param value
@@ -56,6 +67,17 @@ public class IntSet
 
 		if (index < data.length) {
 			data[index] &= ~(1L << value);
+		}
+	}
+
+	/**
+	 * @param values
+	 * 		Values to {@link IntSet#remove(int) remove}
+	 */
+	public void remove(final int... values)
+	{
+		for (int value : values) {
+			this.remove(value);
 		}
 	}
 
