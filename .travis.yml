@@ -1,0 +1,10 @@
+language: java
+sudo: false
+install: ""
+script: ""
+jdk:
+    - oraclejdk8
+cache:
+    directories:
+        - $HOME/.gradle/caches
+        - $HOME/.gradle/wrapper
