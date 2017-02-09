@@ -1,7 +1,5 @@
 language: java
 sudo: false
-install: ""
-script: ""
 jdk:
     - oraclejdk8
 cache:
