@@ -1,3 +1,5 @@
+package com.github.leo_scream.java_se_course.intarraylist;
+
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
@@ -111,7 +113,8 @@ public class IntArrayList
 	 * @param endExclusive
 	 * 		Index to finish
 	 *
-	 * @return Maximum value of passed <code>data</code> array on a passed range
+	 * @return Maximum value of passed {@code data} array on a passed
+	 * range
 	 */
 	private int getMaxValueRecursive(int[] data, int startInclusive, int endExclusive)
 	{
@@ -134,11 +137,12 @@ public class IntArrayList
 	/**
 	 * Sort array using recursive way.
 	 *
-	 * @see #mergeSortRecursive
+	 * @param strategy
+	 * 		Object of sorting strategy class
 	 */
-	public void sort()
+	public void sort(Sorter strategy)
 	{
-		mergeSortRecursive(data, 0, getSize(), new int[getSize()]);
+		data = strategy.sort(this.data);
 	}
 
 	/**
@@ -163,8 +167,7 @@ public class IntArrayList
 				if (value == data[mid]) {
 					index = mid;
 					break;
-				}
-				else {
+				} else {
 					if (value < data[mid]) {
 						high = mid;
 					} else {
@@ -176,35 +179,5 @@ public class IntArrayList
 		}
 
 		return index;
-	}
-
-	private static void mergeSortRecursive(int[] data, int startInclusive,
-	                                       int endExclusive, int[] free)
-	{
-		final int length = endExclusive - startInclusive;
-		if (length <= 1) {
-			return;
-		}
-
-		final int mid = startInclusive + length / 2;
-
-		mergeSortRecursive(data, startInclusive, mid, free);
-		mergeSortRecursive(data, mid, endExclusive, free);
-
-		merger(data, startInclusive, mid, endExclusive, free);
-	}
-
-	private static void merger(int[] data, int startInclusive, int mid, int endExclusive, int[] free)
-	{
-		System.arraycopy(data, startInclusive, free, startInclusive, endExclusive - startInclusive);
-
-		int i = startInclusive;
-		int j = mid;
-		for (int k = startInclusive; k < endExclusive; k++) {
-			if (i >= mid) data[k] = free[j++];
-			else if (j >= endExclusive) data[k] = free[i++];
-			else if (free[i] < free[j]) data[k] = free[i++];
-			else data[k] = free[j++];
-		}
 	}
 }

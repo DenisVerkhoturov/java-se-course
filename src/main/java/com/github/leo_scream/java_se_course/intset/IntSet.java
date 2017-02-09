@@ -1,3 +1,5 @@
+package com.github.leo_scream.java_se_course.intset;
+
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */

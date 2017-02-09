@@ -1,3 +1,5 @@
+package com.github.leo_scream.java_se_course.intset;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

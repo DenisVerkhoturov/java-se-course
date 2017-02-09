@@ -1,3 +1,5 @@
+package com.github.leo_scream.java_se_course.intarraylist;
+
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -67,19 +69,36 @@ public class IntArrayListTest
 	@Test
 	public void sort() throws Exception
 	{
+		final int[] values = new Random()
+				.ints(256, Integer.MIN_VALUE, Integer.MAX_VALUE)
+				.toArray();
+		final IntArrayList list = new IntArrayList(values);
 
+		list.sort(ints -> {
+			for (int i = 0; i < ints.length; i++) {
+				for (int j = 1; j < ints.length; j++) {
+					if (ints[j - 1] > ints[j]) {
+						int tmp = ints[j - 1];
+						ints[j - 1] = ints[j];
+						ints[j] = tmp;
+					}
+				}
+			}
+
+			return ints;
+		});
 	}
 
 	@Test
 	public void binarySearch() throws Exception
 	{
 		final int[] values = {
-			Integer.MAX_VALUE, -1889, -1, 0, 1, 42, Integer.MAX_VALUE
+				Integer.MAX_VALUE, -1889, -1, 0, 1, 42, Integer.MAX_VALUE
 		};
 		final IntArrayList list = new IntArrayList(values);
 
 		assertEquals(-3, list.binarySearch(-42));
 		assertEquals(1, list.binarySearch(-1889));
+		assertEquals(-7, list.binarySearch(Integer.MAX_VALUE - 1));
 	}
-
 }
