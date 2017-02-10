@@ -8,16 +8,16 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**
- * @author Denis Verkhoturov, @author mod.satyr@gmail.com
+ * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class MergeSortBottomUpTest
+public class MergeSortTopDownTest
 {
     @Test
     public void sort() throws Exception
     {
-        final Sorter sorter = new MergeSortBottomUp();
+        final Sorter sorter = new MergeSortTopDown();
         final int[] values = new Random()
-            .ints(256, Integer.MIN_VALUE, Integer.MAX_VALUE)
+            .ints(8, -10, 10)
             .toArray();
 
         final int[] sorted = sorter.sort(values);

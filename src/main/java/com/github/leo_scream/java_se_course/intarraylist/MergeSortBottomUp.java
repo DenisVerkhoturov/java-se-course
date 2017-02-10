@@ -3,49 +3,24 @@ package com.github.leo_scream.java_se_course.intarraylist;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class MergeSortBottomUp implements Sorter
+public class MergeSortBottomUp extends AbstractMergeSort implements Sorter
 {
-	@Override
-	public int[] sort(int... values)
-	{
-		int mid;
-		int endExclusive;
-		int[] sorted = new int[values.length];
+    @Override
+    public int[] sort(final int... values)
+    {
+        final int[] sorted = new int[values.length];
+        final int[] buffer = new int[values.length];
+        System.arraycopy(values, 0, sorted, 0, values.length);
 
-		for (int length = 1; length <= values.length; length *= 2) {
-			for (int startInclusive = 0; startInclusive < values.length; startInclusive += 2 * length) {
-				endExclusive = startInclusive + length;
+        for (int range = 2; range <= values.length; range *= 2) {
+            for (int start = 0; start < values.length; start += range) {
+                final int end = start + range;
+                final int mid = (start + end) / 2;
 
-				if (endExclusive >= values.length) {
-					mid = startInclusive + (values.length - startInclusive) / 2;
-					merge(values, startInclusive, mid, sorted.length, sorted);
-				} else {
-					mid = startInclusive + length / 2;
-					merge(values, startInclusive, mid, endExclusive, sorted);
-				}
+                merge(sorted, start, mid, end, buffer);
+            }
+        }
 
-				if (endExclusive < values.length - 1 && startInclusive + 2 * length >= values.length) {
-					merge(values, 0, endExclusive, values.length, sorted);
-				}
-			}
-		}
-
-		return sorted;
-	}
-
-	private void merge(int[] array, int startInclusive, int mid,
-	                    int endExclusive, int[] free)
-	{
-		int i = startInclusive;
-		int j = mid;
-
-		System.arraycopy(array, startInclusive, free, startInclusive, endExclusive - startInclusive);
-
-		for (int k = startInclusive; k < endExclusive; k++) {
-			if (i >= mid) array[k] = free[j++];
-			else if (j >= endExclusive) array[k] = free[i++];
-			else if (free[i] < free[j]) array[k] = free[i++];
-			else array[k] = free[j++];
-		}
-	}
+        return sorted;
+    }
 }

@@ -6,5 +6,5 @@ package com.github.leo_scream.java_se_course.intarraylist;
 @FunctionalInterface
 public interface Sorter
 {
-	int[] sort(int... values);
+    int[] sort(int... values);
 }
