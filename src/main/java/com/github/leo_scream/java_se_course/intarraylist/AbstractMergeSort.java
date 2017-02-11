@@ -3,7 +3,7 @@ package com.github.leo_scream.java_se_course.intarraylist;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-abstract class AbstractMergeSort
+abstract class AbstractMergeSort implements Sorter
 {
     protected void merge(int[] data, int start, int mid, int end, int[] buffer)
     {

@@ -3,7 +3,7 @@ package com.github.leo_scream.java_se_course.intarraylist;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class MergeSortTopDown extends AbstractMergeSort implements Sorter
+public class MergeSortTopDown extends AbstractMergeSort
 {
     @Override
     public int[] sort(int... values)
