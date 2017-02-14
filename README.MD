@@ -15,6 +15,7 @@
 |------|:--------------:|:-----:|
 | Task 01 | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/task01) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/task01) |
 | Task 02 | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/task02) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/task02) |
+| Task 02 | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/task03) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/task03) |
 | IntSet | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/intset) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/intset)
 | IntArrayList | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/intarraylist) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/intarraylist) 
 
