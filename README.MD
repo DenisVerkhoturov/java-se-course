@@ -5,6 +5,7 @@
 ##### Branches:
 - master - ready solutions
 - develop - tasks in progress
+- gh-pages - javadoc ([:octocat:](https://leo-scream.github.io/java-se-course))
 
 ##### Legend
 :octocat: - link at a package
