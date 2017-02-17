@@ -6,6 +6,7 @@
 - master - ready solutions
 - develop - tasks in progress
 
+##### Legend
 :octocat: - link at a package
 
 ---
@@ -18,6 +19,7 @@
 | Task 03 | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/task03) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/task03) |
 | Task 04 | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/task04) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/task04) |
 | Task 05 | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/task05) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/task05) |
+| Task 06 | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/task06) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/task06) |
 | IntSet | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/intset) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/intset)
 | IntArrayList | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/intarraylist) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/intarraylist) 
 
