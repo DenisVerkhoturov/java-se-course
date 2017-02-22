@@ -2,6 +2,7 @@
 [![Build status][travis-image]][travis-url]
 
 ---
+
 ##### Legend
 :octocat: - link
 
@@ -9,6 +10,7 @@
 - master - ready solutions
 - develop - tasks in progress
 - gh-pages - javadoc ([:octocat:](https://leo-scream.github.io/java-se-course))
+
 ---
 
 ## Unit 01. Java Fundamentals

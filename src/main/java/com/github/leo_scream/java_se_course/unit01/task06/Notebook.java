@@ -137,6 +137,8 @@ public class Notebook
      *
      * @param i
      * 		Index of {@code note} which will be updated
+     * @param note
+     * 		{@code note} to insert
      *
      * @throws IndexOutOfBoundsException
      * 		If {@code i} negative or bigger that {@code size}
