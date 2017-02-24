@@ -1,9 +1,30 @@
 apply plugin: 'java'
+apply plugin: 'groovy'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        groovy {
+            srcDirs = ['src/test/groovy']
+        }
+    }
+}
 
 repositories {
     jcenter()
 }
 
 dependencies {
+    testCompile 'org.codehaus.groovy:groovy-all:2.4.7'
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+
     testCompile 'junit:junit:4.12'
 }

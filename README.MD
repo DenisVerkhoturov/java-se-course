@@ -7,9 +7,12 @@
 :octocat: - link
 
 ##### Branches:
-- master - ready solutions
-- develop - tasks in progress
-- gh-pages - javadoc ([:octocat:](https://leo-scream.github.io/java-se-course))
+- `master` - ready solutions
+- `develop` - tasks in progress
+- `gh-pages` - javadoc ([:octocat:](https://leo-scream.github.io/java-se-course))
+
+##### Notes
+[There are Spock tests](src/test/groovy/com/github/leo_scream/java_se_course) for some tasks, may be later it will be for all tasks.
 
 ---
 
