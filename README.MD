@@ -36,10 +36,10 @@
 ## Unit 02. Object-oriented programming in Java
 | Task | Solutions | Tests |
 |------|:---------:|:-----:|
-| 01. OOP principles, simple classes and objects | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit02/task01) | - |
+| 01. OOP principles, simple classes and objects | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit02/task01) | [:octocat:](src/test/groovy/com/github/leo_scream/java_se_course/unit02/task01) |
 | 02. Classes and objects | - | - |
 | 03. Inheritance | - | - |
 | 04. Interfaces | - | - |
 | 05. Gentrifying and enumerations | - | - |
-| 06. Classes in other classes | - | - |
-| 07. Annotations | - | - |
+| 06. Classes in other classes | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit02/task06) | - |
+| 07. Annotations | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit02/task07) | - |

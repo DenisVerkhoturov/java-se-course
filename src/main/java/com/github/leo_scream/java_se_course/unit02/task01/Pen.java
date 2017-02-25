@@ -42,6 +42,7 @@ public class Pen
     @Override
     public String toString()
     {
-        return "Pen#" + hashCode() + "{color: " + color + ", ink: " + ink + "}";
+        return getClass().getName() +
+            "[color: " + color + ", " + "ink: " + ink + "]";
     }
 }
