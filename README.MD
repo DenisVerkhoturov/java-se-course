@@ -43,3 +43,12 @@
 | 05. Gentrifying and enumerations | - | - |
 | 06. Classes in other classes | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit02/task06) | - |
 | 07. Annotations | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit02/task07) | - |
+
+---
+
+## Unit 03. Information handling
+| Task | Solutions | Tests |
+|------|:---------:|:-----:|
+| 01. String classes| [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit03/task01) | [:octocat:](src/test/groovy/com/github/leo_scream/java_se_course/unit03/task01) |
+| 02. Locale and ResourceBundle | - | - |
+| 03. Regular expression | - | - |
