@@ -28,9 +28,6 @@
 | IntSet | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit01/intset) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/unit01/intset)
 | IntArrayList | [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit01/intarraylist) | [:octocat:](src/test/java/com/github/leo_scream/java_se_course/unit01/intarraylist) 
 
-[travis-image]: https://travis-ci.org/Leo-Scream/java-se-course.svg?branch=master
-[travis-url]: https://travis-ci.org/Leo-Scream/java-se-course
-
 ---
 
 ## Unit 02. Object-oriented programming in Java
@@ -52,3 +49,6 @@
 | 01. String classes| [:octocat:](src/main/java/com/github/leo_scream/java_se_course/unit03/task01) | [:octocat:](src/test/groovy/com/github/leo_scream/java_se_course/unit03/task01) |
 | 02. Locale and ResourceBundle | - | - |
 | 03. Regular expression | - | - |
+
+[travis-image]: https://travis-ci.org/Leo-Scream/java-se-course.svg?branch=master
+[travis-url]: https://travis-ci.org/Leo-Scream/java-se-course

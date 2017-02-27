@@ -54,7 +54,7 @@ fabric.properties
 
 ### Gradle ###
 .gradle
-build/
+build
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -70,4 +70,4 @@ gradle-app.setting
 
 # End of https://www.gitignore.io/api/intellij,gradle
 
-javadoc/
+javadoc

@@ -1,30 +1,18 @@
-apply plugin: 'java'
-apply plugin: 'groovy'
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'groovy'
 
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src/main/java']
-        }
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        jcenter()
     }
 
-    test {
-        java {
-            srcDirs = ['src/test/java']
-        }
-        groovy {
-            srcDirs = ['src/test/groovy']
-        }
+    dependencies {
+        testCompile 'org.codehaus.groovy:groovy-all:2.4.7'
+        testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+
+        testCompile 'junit:junit:4.12'
     }
-}
-
-repositories {
-    jcenter()
-}
-
-dependencies {
-    testCompile 'org.codehaus.groovy:groovy-all:2.4.7'
-    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
-
-    testCompile 'junit:junit:4.12'
 }
