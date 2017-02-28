@@ -1,17 +1,22 @@
-subprojects {
+group = 'com.github.leo_scream.java_se_cource'
+version = '1.0'
+
+allprojects {
     apply plugin: 'java'
     apply plugin: 'groovy'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
+}
 
+subprojects {
     repositories {
         jcenter()
     }
 
     dependencies {
-        testCompile 'org.codehaus.groovy:groovy-all:2.4.7'
-        testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+        testCompile 'org.codehaus.groovy:groovy-all:2.4.9'
+        testCompile 'org.spockframework:spock-core:1.1-groovy-2.4-rc-3'
 
         testCompile 'junit:junit:4.12'
     }
