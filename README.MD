@@ -11,6 +11,11 @@
 - `develop` - tasks in progress
 - `gh-pages` - javadoc ([:link:](https://leo-scream.github.io/java-se-course))
 
+##### Units
+- [Unit 01. Java Fundamentals](unit_01/)
+- [Unit 02. Object-oriented programming in Java](unit_02/)
+- [Unit 03. Information handling](unit_03/)
+
 ---
 
 [travis-image]: https://travis-ci.org/Leo-Scream/java-se-course.svg?branch=master
