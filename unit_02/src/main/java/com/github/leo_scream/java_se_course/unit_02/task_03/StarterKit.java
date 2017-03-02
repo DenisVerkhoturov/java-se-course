@@ -10,7 +10,7 @@ public class StarterKit<T>
 {
     private final T[] objects;
 
-    public StarterKit(T... objects)
+    public StarterKit(T[] objects)
     {
         this.objects = objects;
     }

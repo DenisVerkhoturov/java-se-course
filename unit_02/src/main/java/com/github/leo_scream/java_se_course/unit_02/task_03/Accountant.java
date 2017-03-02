@@ -12,11 +12,12 @@ public class Accountant extends Employee
     public Accountant()
     {
         this.employeeStarterKit = new StarterKit<>(
-            new Pen(BigDecimal.valueOf(15)),
-            new Pen(BigDecimal.valueOf(25)),
-            new Clip(BigDecimal.valueOf(150)),
-            new Stapler(BigDecimal.valueOf(315)),
-            new Pencil(BigDecimal.valueOf(75))
+            new Stationery[]{
+                new Pen(BigDecimal.valueOf(15)),
+                new Pen(BigDecimal.valueOf(25)),
+                new Clip(BigDecimal.valueOf(150)),
+                new Stapler(BigDecimal.valueOf(315)),
+                new Pencil(BigDecimal.valueOf(75))}
         );
     }
 
