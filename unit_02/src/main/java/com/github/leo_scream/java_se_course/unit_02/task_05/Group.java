@@ -3,6 +3,7 @@ package com.github.leo_scream.java_se_course.unit_02.task_05;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,7 +19,7 @@ public class Group<T extends Mark>
     {
         this.subject = subject;
         this.journal = students.stream().collect(
-            Collectors.toMap(student -> student, mark -> Optional.<T>empty())
+            Collectors.toMap(Function.identity(), student -> Optional.<T>empty())
         );
     }
 
