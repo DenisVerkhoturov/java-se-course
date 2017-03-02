@@ -18,7 +18,7 @@ public class Group<T extends Mark>
     {
         this.subject = subject;
         this.journal = students.stream().collect(
-            Collectors.toMap(student -> student, mark -> Optional.ofNullable(null))
+            Collectors.toMap(student -> student, mark -> Optional.<T>empty())
         );
     }
 
