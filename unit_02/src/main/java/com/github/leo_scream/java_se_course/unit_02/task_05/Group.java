@@ -19,7 +19,10 @@ public class Group<T extends Mark>
     {
         this.subject = subject;
         this.journal = students.stream().collect(
-            Collectors.toMap(Function.identity(), student -> Optional.<T>empty())
+            Collectors.<Student, Student, Optional<T>>toMap(
+                Function.identity(),
+                student -> Optional.empty()
+            )
         );
     }
 
