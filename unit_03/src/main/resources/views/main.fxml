@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.65"
+            fx:controller="com.github.leo_scream.java_se_course.unit_03.task_02.controllers.Main">
+    <children>
+        <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ComboBox fx:id="languages" prefWidth="150.0" AnchorPane.bottomAnchor="15.0"
+                                  AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="15.0"/>
+                    </children>
+                </AnchorPane>
+            </top>
+            <center>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Accordion fx:id="faqAccordion" layoutX="25.0" layoutY="15.0"
+                                   prefHeight="344.0" prefWidth="600.0"
+                                   AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="25.0"
+                                   AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="15.0"/>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
