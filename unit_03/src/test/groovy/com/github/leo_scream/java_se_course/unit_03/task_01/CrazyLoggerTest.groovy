@@ -2,71 +2,53 @@ package com.github.leo_scream.java_se_course.unit_03.task_01
 
 import spock.lang.Specification
 
-import java.util.regex.Pattern
-
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
 class CrazyLoggerTest extends Specification {
-    def "First and last logged messages of empty logger is empty string"() {
+    def "Messages is empty if nothing was logged"() {
         setup:
-        def CrazyLogger logger = new CrazyLogger()
+        def logger = new CrazyLogger()
 
         expect:
-        assert logger.firstMessage().equals("")
-        assert logger.lastMessage().equals("")
+        logger.messages().count() == 0
     }
 
-    def "Head and tail of empty logger is empty list"() {
-        setup:
-        def CrazyLogger logger = new CrazyLogger()
+    def "Message logged as string actually can be found in messages"() {
+        given:
+        def logger = new CrazyLogger()
+        def message = "Some strongly informative message"
 
-        expect:
-        assert logger.tail().isEmpty()
-        assert logger.head().isEmpty()
-    }
-
-    def "Fist and last messages in logger with one message is same"() {
-        setup:
-        def CrazyLogger logger = new CrazyLogger()
-
-        expect:
-        assert logger.firstMessage().equals(logger.lastMessage())
-    }
-
-    def "Logger formats messages properly"() {
-        setup:
-        def pattern = '^[\\d]{2}-[\\d]{2}-[\\d]{4} : [\\d]{2}-[\\d]{2} — .+;$'
-        def CrazyLogger logger = new CrazyLogger()
-        logger.log("Hello, world")
-
-        expect:
-        assert Pattern.matches(pattern, logger.lastMessage())
-    }
-
-    def "Last logged message is actually last"() {
-        setup:
-        def CrazyLogger logger = new CrazyLogger()
-        def message = "Hello, world"
-        def pattern =
-            '^[\\d]{2}-[\\d]{2}-[\\d]{4} : [\\d]{2}-[\\d]{2} — ' + message + ';$'
-        logger.log("Definitely not last message")
+        when:
         logger.log(message)
 
-        expect:
-        assert Pattern.matches(pattern, logger.lastMessage())
+        then:
+        logger.messages().count() == old(logger.messages().count()) + 1
+        logger.messages().anyMatch({
+            loggedMessage -> message == loggedMessage.text
+        })
     }
 
-    def "First logged message is actually first"() {
+    def "Filtering by text"() {
         setup:
-        def CrazyLogger logger = new CrazyLogger()
-        def message = "Hello, world"
-        def pattern =
-            '^[\\d]{2}-[\\d]{2}-[\\d]{4} : [\\d]{2}-[\\d]{2} — ' + message + ';$'
-        logger.log(message)
-        logger.log("Definitely not first message")
+        def logger = new CrazyLogger()
+        def unexpected = "Must not appears in filtered"
+        def expected = "Must appear in filtered"
+
+        logger.log(unexpected)
+              .log(expected)
+              .log(unexpected)
+              .log(expected)
+              .log(expected)
+              .log(unexpected)
+              .log(unexpected)
+              .log(unexpected)
 
         expect:
-        assert Pattern.matches(pattern, logger.firstMessage())
+        logger.messages()
+            .filter({
+                message -> message.getText().contains("Must appear")
+            })
+            .count() == 3
     }
 }

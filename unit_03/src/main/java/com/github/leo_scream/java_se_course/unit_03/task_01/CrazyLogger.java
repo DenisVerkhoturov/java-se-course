@@ -1,10 +1,12 @@
 package com.github.leo_scream.java_se_course.unit_03.task_01;
 
-import java.text.MessageFormat;
-import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Date;
+import java.util.stream.Stream;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
@@ -12,81 +14,98 @@ import java.util.Date;
 public class CrazyLogger
 {
     private final StringBuilder log;
-    private final MessageFormat template;
-    private final String delimiter;
+    private final String messagesDelimiter;
+    private final String dateMessageDelimiter;
+    private final DateTimeFormatter format;
 
     public CrazyLogger()
     {
         this.log = new StringBuilder();
-        this.delimiter = "\n";
-        this.template = new MessageFormat(
-            "{0,date,dd-mm-YYYY} : {0,time,hh-mm} — {1};" + delimiter
-        );
+        this.messagesDelimiter = "\n";
+        this.dateMessageDelimiter = "—";
+        this.format = new DateTimeFormatterBuilder()
+            .appendPattern("dd-MM-yyyy : HH-mm")
+            .toFormatter();
     }
 
-    public void log(String message)
+    /**
+     * Get all the logged messages as steam.
+     *
+     * @return Stream of {@link Message messages} containing all the logged messages.
+     */
+    public Stream<Message> messages()
     {
-        final Object[] parameters = {
-            Date.from(Instant.now()),
-            message.trim().replaceAll(delimiter, " ")
-        };
-        log.append(template.format(parameters));
-    }
-
-    public String firstMessage()
-    {
-        return log.toString().equals("")
-            ? ""
-            : log.substring(0, log.indexOf(delimiter));
-    }
-
-    public String lastMessage()
-    {
-        String[] messages = log.toString().split(delimiter);
-        return messages.length > 0 ? messages[messages.length - 1] : "";
-    }
-
-    public List<String> head()
-    {
-        return this.head(10);
-    }
-
-    public List<String> head(int count)
-    {
-        String loggedString = log.toString();
-
-        if (loggedString.equals("")) {
-            return Arrays.asList(new String[0]);
+        if (log.length() > 0) {
+            return Arrays.stream(log.toString().split(messagesDelimiter)).map(
+                entry -> {
+                    String[] parts = entry.split(dateMessageDelimiter);
+                    String date = parts[0].trim();
+                    String text = parts[1].trim();
+                    ZonedDateTime dateTime = LocalDateTime.parse(date, format).atZone(ZoneId.systemDefault());
+                    return new Message(dateTime, text);
+                }
+            );
         } else {
-            List<String> messages = Arrays.asList(loggedString.split(delimiter));
-
-            int end = messages.size() > count
-                ? count
-                : messages.size();
-
-            return messages.subList(0, end);
+            return Stream.empty();
         }
     }
 
-    public List<String> tail()
+    /**
+     * Logs message.
+     *
+     * @param message
+     * 		Message to log
+     */
+    public CrazyLogger log(String message)
     {
-        return this.tail(10);
+        log.append(format.format(ZonedDateTime.now()))
+            .append(" ")
+            .append(dateMessageDelimiter)
+            .append(" ")
+            .append(clean(message))
+            .append(messagesDelimiter);
+
+        return this;
     }
 
-    public List<String> tail(int count)
+    /**
+     * Make text safe to keep logged.
+     *
+     * @param text
+     * 		To clean from delimiters which {@link CrazyLogger}
+     * 		uses to separate date and text of message
+     *
+     * @return Safe to keep logged string
+     */
+    private String clean(String text)
     {
-        String loggedString = log.toString();
+        return text.trim()
+            .replaceAll(messagesDelimiter, " ")
+            .replaceAll(dateMessageDelimiter, "-");
+    }
 
-        if (loggedString.equals("")) {
-            return Arrays.asList(new String[0]);
-        } else {
-            List<String> messages = Arrays.asList(loggedString.split(delimiter));
+    /**
+     * Represents log entry
+     */
+    public class Message
+    {
+        private final ZonedDateTime dateTime;
+        private final String text;
 
-            int start = messages.size() > count
-                ? messages.size() - count
-                : 0;
+        private Message(ZonedDateTime dateTime, String text)
+        {
+            this.dateTime = dateTime;
+            this.text = text;
+        }
 
-            return messages.subList(start, messages.size());
+        public ZonedDateTime getDateTime()
+        {
+            return this.dateTime;
+        }
+
+        public String getText()
+        {
+            return this.text;
         }
     }
 }
