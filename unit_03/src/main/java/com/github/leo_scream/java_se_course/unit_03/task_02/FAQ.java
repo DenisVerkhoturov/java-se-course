@@ -22,7 +22,7 @@ public class FAQ extends Application
     public void start(Stage primaryStage) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
-        InputStream inputStream = getClass().getResourceAsStream("/faq/views/main.fxml");
+        InputStream inputStream = getClass().getResourceAsStream("views/main.fxml");
         AnchorPane root = loader.load(inputStream);
         Scene scene = new Scene(root);
 

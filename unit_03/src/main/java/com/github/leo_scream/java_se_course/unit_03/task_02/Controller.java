@@ -1,4 +1,4 @@
-package com.github.leo_scream.java_se_course.unit_03.task_02.controllers;
+package com.github.leo_scream.java_se_course.unit_03.task_02;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,8 +19,9 @@ import java.util.Set;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class Main implements Initializable
+public class Controller implements Initializable
 {
+    private final String i18nResourcesURI = getClass().getPackage().getName() + ".bundles.Locale";
     private final ObservableList<Locale> locales = FXCollections.observableArrayList(
         Locale.ENGLISH, new Locale("ru"), Locale.GERMAN
     );
@@ -55,7 +56,7 @@ public class Main implements Initializable
 
     private void refreshFAQ(Locale locale)
     {
-        final ResourceBundle resources = ResourceBundle.getBundle("faq.bundles.Locale", locale);
+        final ResourceBundle resources = ResourceBundle.getBundle(i18nResourcesURI, locale);
         final Set<String> identifiers = new HashSet<>();
         faqAccordion.getPanes().clear();
         resources.keySet().forEach(
