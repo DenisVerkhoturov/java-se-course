@@ -4,4 +4,4 @@
 |------|:---------:|:-----:|
 | 01. String classes| [:link:](src/main/java/com/github/leo_scream/java_se_course/unit_03/task_01) | [:link:](src/test/groovy/com/github/leo_scream/java_se_course/unit_03/task_01) |
 | 02. Locale and ResourceBundle | [:link:](src/main/java/com/github/leo_scream/java_se_course/unit_03/task_02) | - |
-| 03. Regular expression | - | - |
+| 03. Regular expression | [:link:](src/main/java/com/github/leo_scream/java_se_course/unit_03/task_03) | - |
