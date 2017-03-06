@@ -8,6 +8,7 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
 import javafx.scene.text.Text;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.util.HashSet;
@@ -21,7 +22,7 @@ import java.util.Set;
 public class Main implements Initializable
 {
     private final ObservableList<Locale> locales = FXCollections.observableArrayList(
-        Locale.ENGLISH, new Locale("ru")
+        Locale.ENGLISH, new Locale("ru"), Locale.GERMAN
     );
     @FXML
     private ComboBox<Locale> languages;
@@ -32,6 +33,20 @@ public class Main implements Initializable
     public void initialize(URL location, ResourceBundle resources)
     {
         languages.setItems(locales);
+        languages.setConverter(new StringConverter<Locale>()
+        {
+            @Override
+            public String toString(Locale locale)
+            {
+                return locale.getDisplayLanguage(locale);
+            }
+
+            @Override
+            public Locale fromString(String string)
+            {
+                return new Locale(string);
+            }
+        });
         languages.getSelectionModel().select(Locale.getDefault());
         languages.setOnAction(event -> refreshFAQ(languages.getValue()));
 
@@ -40,7 +55,7 @@ public class Main implements Initializable
 
     private void refreshFAQ(Locale locale)
     {
-        final ResourceBundle resources = ResourceBundle.getBundle("bundles.Locale", locale);
+        final ResourceBundle resources = ResourceBundle.getBundle("faq.bundles.Locale", locale);
         final Set<String> identifiers = new HashSet<>();
         faqAccordion.getPanes().clear();
         resources.keySet().forEach(
@@ -60,9 +75,6 @@ public class Main implements Initializable
     {
         Text content = new Text(answer);
         content.wrappingWidthProperty().bind(faqAccordion.widthProperty());
-        TitledPane entry = new TitledPane(question, content);
-        entry.maxWidthProperty().bind(faqAccordion.widthProperty());
-        entry.setWrapText(true);
-        return entry;
+        return new TitledPane(question, content);
     }
 }
