@@ -5,10 +5,9 @@ import java.math.BigDecimal;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class Pen extends Stationery
-{
-    protected Pen(BigDecimal cost)
-    {
+public class Pen extends Stationery {
+
+    protected Pen(BigDecimal cost) {
         super(cost);
     }
 }

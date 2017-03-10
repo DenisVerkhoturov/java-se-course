@@ -5,12 +5,11 @@ import java.math.BigDecimal;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class Accountant extends Employee
-{
+public class Accountant extends Employee {
+
     private final StarterKit<Stationery> employeeStarterKit;
 
-    public Accountant()
-    {
+    public Accountant() {
         this.employeeStarterKit = new StarterKit<>(
             new Stationery[]{
                 new Pen(BigDecimal.valueOf(15)),
@@ -21,13 +20,11 @@ public class Accountant extends Employee
         );
     }
 
-    public void provide(Employee employee)
-    {
+    public void provide(Employee employee) {
         employeeStarterKit.objects().forEach(employee::takeStationery);
     }
 
-    public BigDecimal calculateStationaryTotalPrice(Employee employee)
-    {
+    public BigDecimal calculateStationaryTotalPrice(Employee employee) {
         return employee.stationeries()
             .map(Stationery::cost)
             .reduce(BigDecimal.ZERO, BigDecimal::add);

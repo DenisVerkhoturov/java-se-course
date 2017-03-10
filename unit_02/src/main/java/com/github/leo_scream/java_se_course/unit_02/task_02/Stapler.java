@@ -5,10 +5,9 @@ import java.math.BigDecimal;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class Stapler extends Stationery
-{
-    protected Stapler(BigDecimal cost)
-    {
+public class Stapler extends Stationery {
+
+    protected Stapler(BigDecimal cost) {
         super(cost);
     }
 }

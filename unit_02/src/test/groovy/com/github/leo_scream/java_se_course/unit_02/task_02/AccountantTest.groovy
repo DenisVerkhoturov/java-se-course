@@ -16,7 +16,7 @@ class AccountantTest extends Specification {
         manager.calculateStationaryTotalPrice(employee) == totalPrice
     }
 
-    def "Stationary total price of fully equipped employee"( ) {
+    def "Stationary total price of fully equipped employee"() {
         setup:
         def Accountant manager = new Accountant()
         def Employee employee = new Employee()

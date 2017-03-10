@@ -11,15 +11,14 @@ import java.util.stream.Stream;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class CrazyLogger
-{
+public class CrazyLogger {
+
     private final StringBuilder log;
     private final String messagesDelimiter;
     private final String dateMessageDelimiter;
     private final DateTimeFormatter format;
 
-    public CrazyLogger()
-    {
+    public CrazyLogger() {
         this.log = new StringBuilder();
         this.messagesDelimiter = "\n";
         this.dateMessageDelimiter = "—";
@@ -33,15 +32,15 @@ public class CrazyLogger
      *
      * @return Stream of {@link Message messages} containing all the logged messages.
      */
-    public Stream<Message> messages()
-    {
+    public Stream<Message> messages() {
         if (log.length() > 0) {
             return Arrays.stream(log.toString().split(messagesDelimiter)).map(
                 entry -> {
                     String[] parts = entry.split(dateMessageDelimiter);
                     String date = parts[0].trim();
                     String text = parts[1].trim();
-                    ZonedDateTime dateTime = LocalDateTime.parse(date, format).atZone(ZoneId.systemDefault());
+                    ZonedDateTime dateTime = LocalDateTime.parse(date, format)
+                        .atZone(ZoneId.systemDefault());
                     return new Message(dateTime, text);
                 }
             );
@@ -53,11 +52,9 @@ public class CrazyLogger
     /**
      * Logs message.
      *
-     * @param message
-     * 		Message to log
+     * @param message Message to log
      */
-    public CrazyLogger log(String message)
-    {
+    public CrazyLogger log(String message) {
         log.append(format.format(ZonedDateTime.now()))
             .append(" ")
             .append(dateMessageDelimiter)
@@ -71,14 +68,11 @@ public class CrazyLogger
     /**
      * Make text safe to keep logged.
      *
-     * @param text
-     * 		To clean from delimiters which {@link CrazyLogger}
-     * 		uses to separate date and text of message
-     *
+     * @param text To clean from delimiters which {@link CrazyLogger} uses to separate date and text
+     * of message
      * @return Safe to keep logged string
      */
-    private String clean(String text)
-    {
+    private String clean(String text) {
         return text.trim()
             .replaceAll(messagesDelimiter, " ")
             .replaceAll(dateMessageDelimiter, "-");
@@ -87,24 +81,21 @@ public class CrazyLogger
     /**
      * Represents log entry
      */
-    public class Message
-    {
+    public class Message {
+
         private final ZonedDateTime dateTime;
         private final String text;
 
-        private Message(ZonedDateTime dateTime, String text)
-        {
+        private Message(ZonedDateTime dateTime, String text) {
             this.dateTime = dateTime;
             this.text = text;
         }
 
-        public ZonedDateTime getDateTime()
-        {
+        public ZonedDateTime getDateTime() {
             return this.dateTime;
         }
 
-        public String getText()
-        {
+        public String getText() {
             return this.text;
         }
     }

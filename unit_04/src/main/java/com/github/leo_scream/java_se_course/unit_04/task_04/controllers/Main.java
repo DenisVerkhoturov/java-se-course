@@ -9,7 +9,6 @@ import javafx.beans.property.SetProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -22,14 +21,13 @@ import javafx.scene.layout.VBox;
  */
 public class Main implements Initializable {
 
+    private final ObservableList<Movie> movies = FXCollections.observableArrayList();
     @FXML
     private Button newMovie;
     @FXML
     private ListView movieList;
     @FXML
     private VBox movieCard;
-
-    private final ObservableList<Movie> movies = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

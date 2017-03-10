@@ -3,10 +3,9 @@ package com.github.leo_scream.java_se_course.unit_01.task_04;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class Solution
-{
-    public static double get(final double[] values)
-    {
+public class Solution {
+
+    public static double get(final double[] values) {
         if (values.length < 2) {
             throw new IllegalArgumentException("Array is too short");
         }

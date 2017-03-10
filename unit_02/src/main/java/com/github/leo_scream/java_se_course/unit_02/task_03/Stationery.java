@@ -5,17 +5,15 @@ import java.math.BigDecimal;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public abstract class Stationery
-{
+public abstract class Stationery {
+
     private final BigDecimal cost;
 
-    protected Stationery(BigDecimal cost)
-    {
+    protected Stationery(BigDecimal cost) {
         this.cost = cost;
     }
 
-    public final BigDecimal cost()
-    {
+    public final BigDecimal cost() {
         return this.cost;
     }
 }

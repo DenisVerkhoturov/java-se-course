@@ -7,17 +7,15 @@ import java.util.stream.Stream;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class Employee
-{
+public class Employee {
+
     private final List<Stationery> stationery = new ArrayList<>();
 
-    public void takeStationery(Stationery stationery)
-    {
+    public void takeStationery(Stationery stationery) {
         this.stationery.add(stationery);
     }
 
-    public Stream<Stationery> stationeries()
-    {
+    public Stream<Stationery> stationeries() {
         return stationery.stream();
     }
 }

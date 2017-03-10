@@ -5,10 +5,9 @@ import java.math.BigDecimal;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class Accountant extends Employee
-{
-    public BigDecimal calculateStationaryTotalPrice(Employee employee)
-    {
+public class Accountant extends Employee {
+
+    public BigDecimal calculateStationaryTotalPrice(Employee employee) {
         return employee.stationeries()
             .map(Stationery::cost)
             .reduce(BigDecimal.ZERO, BigDecimal::add);

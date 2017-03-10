@@ -3,30 +3,26 @@ package com.github.leo_scream.java_se_course.unit_01.intset;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class IntSet
-{
+public class IntSet {
+
     private long[] positives;
     private long[] negatives;
 
-    private IntSet(long[] positives, long[] negatives)
-    {
+    private IntSet(long[] positives, long[] negatives) {
         this.positives = positives;
         this.negatives = negatives;
     }
 
-    public IntSet()
-    {
+    public IntSet() {
         this(new long[0], new long[0]);
     }
 
     /**
      * Adds value in set.
      *
-     * @param value
-     * 		Value to add
+     * @param value Value to add
      */
-    public void add(final int value)
-    {
+    public void add(final int value) {
         final int index = (value < 0) ? -(value / 64) : value / 64;
         long[] data = (value < 0) ? negatives : positives;
 
@@ -46,11 +42,9 @@ public class IntSet
     }
 
     /**
-     * @param values
-     * 		Values to {@link IntSet#add(int) add}
+     * @param values Values to {@link IntSet#add(int) add}
      */
-    public void add(final int... values)
-    {
+    public void add(final int... values) {
         for (int value : values) {
             this.add(value);
         }
@@ -59,11 +53,9 @@ public class IntSet
     /**
      * Removes value from set if such value is in set.
      *
-     * @param value
-     * 		Value to remove
+     * @param value Value to remove
      */
-    public void remove(final int value)
-    {
+    public void remove(final int value) {
         final int index = (value < 0) ? -(value / 64) : value / 64;
         long[] data = (value < 0) ? negatives : positives;
 
@@ -73,11 +65,9 @@ public class IntSet
     }
 
     /**
-     * @param values
-     * 		Values to {@link IntSet#remove(int) remove}
+     * @param values Values to {@link IntSet#remove(int) remove}
      */
-    public void remove(final int... values)
-    {
+    public void remove(final int... values) {
         for (int value : values) {
             this.remove(value);
         }
@@ -86,14 +76,10 @@ public class IntSet
     /**
      * Check if value is in set.
      *
-     * @param value
-     * 		Value to check
-     *
-     * @return <code>true</code> if value is in set,
-     * otherwise <code>false</code>
+     * @param value Value to check
+     * @return <code>true</code> if value is in set, otherwise <code>false</code>
      */
-    public boolean contains(final int value)
-    {
+    public boolean contains(final int value) {
         final int index = (value < 0) ? -(value / 64) : value / 64;
         final long[] data = (value < 0) ? negatives : positives;
 
@@ -104,14 +90,11 @@ public class IntSet
     /**
      * Union current set with another.
      *
-     * @param other
-     * 		Set to union with current set
-     *
-     * @return Returns new instance of <code>IntSet</code> which contains
-     * all the element of origin set and <code>other</code> set
+     * @param other Set to union with current set
+     * @return Returns new instance of <code>IntSet</code> which contains all the element of origin
+     * set and <code>other</code> set
      */
-    public IntSet union(IntSet other)
-    {
+    public IntSet union(IntSet other) {
         final int positivesSize = positives.length > other.positives.length
             ? this.positives.length
             : other.positives.length;
@@ -141,15 +124,11 @@ public class IntSet
     /**
      * Calculates intersection.
      *
-     * @param other
-     * 		Set to intersect with current set
-     *
-     * @return Returns new instance of <code>IntSet</code>
-     * with all the elements which contains in both sets
-     * origin and <code>other</code>
+     * @param other Set to intersect with current set
+     * @return Returns new instance of <code>IntSet</code> with all the elements which contains in
+     * both sets origin and <code>other</code>
      */
-    public IntSet intersection(IntSet other)
-    {
+    public IntSet intersection(IntSet other) {
         final int positivesSize = positives.length < other.positives.length
             ? this.positives.length
             : other.positives.length;
@@ -179,15 +158,11 @@ public class IntSet
     /**
      * Calculate difference.
      *
-     * @param other
-     * 		Set to difference with current set
-     *
-     * @return Returns new instance of <code>IntSet</code>
-     * with all the elements which contains only in one
-     * of sets nor both together
+     * @param other Set to difference with current set
+     * @return Returns new instance of <code>IntSet</code> with all the elements which contains only
+     * in one of sets nor both together
      */
-    public IntSet difference(IntSet other)
-    {
+    public IntSet difference(IntSet other) {
         final int positivesSize = positives.length > other.positives.length
             ? this.positives.length
             : other.positives.length;
@@ -217,14 +192,10 @@ public class IntSet
     /**
      * Check if current set is subset of <code>other</code>.
      *
-     * @param other
-     * 		Set to check on
-     *
-     * @return Returns <code>true</code> if all the elements
-     * of this set is in <code>other</code> set
+     * @param other Set to check on
+     * @return Returns <code>true</code> if all the elements of this set is in <code>other</code> set
      */
-    public boolean isSubsetOf(IntSet other)
-    {
+    public boolean isSubsetOf(IntSet other) {
         long left;
         long right;
 

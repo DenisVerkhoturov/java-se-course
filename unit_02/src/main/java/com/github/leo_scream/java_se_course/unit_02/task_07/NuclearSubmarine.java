@@ -3,8 +3,8 @@ package com.github.leo_scream.java_se_course.unit_02.task_07;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class NuclearSubmarine
-{
+public class NuclearSubmarine {
+
     public final Engine engine;
 
     public NuclearSubmarine() {
@@ -14,6 +14,7 @@ public class NuclearSubmarine
 
     @Radiation(level = Radiation.Level.FRIGHTENING)
     public class Engine {
+
         public void start() {
             System.out.println("Nuclear submarine is now sailing");
         }

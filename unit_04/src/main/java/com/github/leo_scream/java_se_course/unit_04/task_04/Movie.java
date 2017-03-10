@@ -7,6 +7,7 @@ import java.util.Set;
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
 public class Movie implements Serializable {
+
     private String name;
     private Set<Actor> actors;
 }

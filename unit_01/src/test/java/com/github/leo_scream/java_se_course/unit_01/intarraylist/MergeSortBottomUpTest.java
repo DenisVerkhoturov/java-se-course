@@ -1,20 +1,18 @@
 package com.github.leo_scream.java_se_course.unit_01.intarraylist;
 
-import org.junit.Test;
-
-import java.util.Random;
-
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.util.Random;
+import org.junit.Test;
 
 /**
  * @author Denis Verkhoturov, @author mod.satyr@gmail.com
  */
-public class MergeSortBottomUpTest
-{
+public class MergeSortBottomUpTest {
+
     @Test
-    public void sort() throws Exception
-    {
+    public void sort() throws Exception {
         final Sorter sorter = new MergeSortBottomUp();
         final int[] values = new Random()
             .ints(256, Integer.MIN_VALUE, Integer.MAX_VALUE)

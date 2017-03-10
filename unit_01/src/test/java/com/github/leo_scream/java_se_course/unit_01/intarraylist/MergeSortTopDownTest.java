@@ -1,20 +1,18 @@
 package com.github.leo_scream.java_se_course.unit_01.intarraylist;
 
-import org.junit.Test;
-
-import java.util.Random;
-
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.util.Random;
+import org.junit.Test;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class MergeSortTopDownTest
-{
+public class MergeSortTopDownTest {
+
     @Test
-    public void sort() throws Exception
-    {
+    public void sort() throws Exception {
         final Sorter sorter = new MergeSortTopDown();
         final int[] values = new Random()
             .ints(8, -10, 10)

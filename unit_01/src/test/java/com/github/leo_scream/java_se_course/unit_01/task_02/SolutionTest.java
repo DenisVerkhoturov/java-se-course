@@ -1,17 +1,16 @@
 package com.github.leo_scream.java_se_course.unit_01.task_02;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class SolutionTest
-{
+public class SolutionTest {
+
     @Test
-    public void get() throws Exception
-    {
+    public void get() throws Exception {
         Solution solution = new Solution();
 
         assertEquals(1, solution.get(15));

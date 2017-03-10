@@ -1,18 +1,17 @@
 package com.github.leo_scream.java_se_course.unit_01.intset;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class IntSetTest
-{
+public class IntSetTest {
+
     @Test
-    public void add() throws Exception
-    {
+    public void add() throws Exception {
         final IntSet set = new IntSet();
         final int value = Integer.MIN_VALUE;
 
@@ -22,8 +21,7 @@ public class IntSetTest
     }
 
     @Test
-    public void addThroughVarArgs() throws Exception
-    {
+    public void addThroughVarArgs() throws Exception {
         final IntSet set = new IntSet();
         final int[] values = {Integer.MIN_VALUE, -1, 0, 1, Integer.MAX_VALUE};
 
@@ -39,8 +37,7 @@ public class IntSetTest
     }
 
     @Test
-    public void remove() throws Exception
-    {
+    public void remove() throws Exception {
         final IntSet set = new IntSet();
         final int value = Integer.MIN_VALUE;
 
@@ -51,8 +48,7 @@ public class IntSetTest
     }
 
     @Test
-    public void removeThroughVarArgs() throws Exception
-    {
+    public void removeThroughVarArgs() throws Exception {
         final IntSet set = new IntSet();
         final int[] values = {Integer.MIN_VALUE, -1, 0, 1, Integer.MAX_VALUE};
 
@@ -70,8 +66,7 @@ public class IntSetTest
     }
 
     @Test
-    public void contains() throws Exception
-    {
+    public void contains() throws Exception {
         final IntSet set = new IntSet();
         final int[] values = {-512, -1, 0, 42, 63, 1997};
 
@@ -97,8 +92,7 @@ public class IntSetTest
     }
 
     @Test
-    public void union() throws Exception
-    {
+    public void union() throws Exception {
         final IntSet set = new IntSet();
         final IntSet other = new IntSet();
         final int[] setValues = {-1997, -512, -1, 0, 42, 63};
@@ -121,8 +115,7 @@ public class IntSetTest
     }
 
     @Test
-    public void intersection() throws Exception
-    {
+    public void intersection() throws Exception {
         final IntSet set = new IntSet();
         final IntSet other = new IntSet();
         final int[] setValues = {-1997, -512, -1, 0, 42, 63};
@@ -145,8 +138,7 @@ public class IntSetTest
     }
 
     @Test
-    public void difference() throws Exception
-    {
+    public void difference() throws Exception {
         final IntSet set = new IntSet();
         final IntSet other = new IntSet();
         final int[] setValues = {-1997, -512, -1, 0, 42, 63};
@@ -169,8 +161,7 @@ public class IntSetTest
     }
 
     @Test
-    public void isSubsetOf() throws Exception
-    {
+    public void isSubsetOf() throws Exception {
         final IntSet set = new IntSet();
         final IntSet subset = new IntSet();
         final IntSet notSubset = new IntSet();

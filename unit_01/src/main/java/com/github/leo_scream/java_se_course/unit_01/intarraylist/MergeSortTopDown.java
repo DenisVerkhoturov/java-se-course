@@ -3,11 +3,10 @@ package com.github.leo_scream.java_se_course.unit_01.intarraylist;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class MergeSortTopDown extends AbstractMergeSort
-{
+public class MergeSortTopDown extends AbstractMergeSort {
+
     @Override
-    public int[] sort(int... values)
-    {
+    public int[] sort(int... values) {
         final int[] sorted = new int[values.length];
         final int[] buffer = new int[values.length];
         System.arraycopy(values, 0, sorted, 0, values.length);
@@ -17,8 +16,7 @@ public class MergeSortTopDown extends AbstractMergeSort
         return sorted;
     }
 
-    private void mergeSort(int[] data, int start, int end, int[] buffer)
-    {
+    private void mergeSort(int[] data, int start, int end, int[] buffer) {
         final int length = end - start;
         if (length <= 1) {
             return;

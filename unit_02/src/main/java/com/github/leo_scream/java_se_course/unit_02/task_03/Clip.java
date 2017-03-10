@@ -5,10 +5,9 @@ import java.math.BigDecimal;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class Clip extends Stationery
-{
-    protected Clip(BigDecimal cost)
-    {
+public class Clip extends Stationery {
+
+    protected Clip(BigDecimal cost) {
         super(cost);
     }
 }

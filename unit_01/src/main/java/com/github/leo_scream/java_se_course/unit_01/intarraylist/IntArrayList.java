@@ -6,19 +6,17 @@ import java.util.NoSuchElementException;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class IntArrayList
-{
+public class IntArrayList {
+
     private int[] data;
     private int size;
 
-    public IntArrayList(int[] data)
-    {
+    public IntArrayList(int[] data) {
         this.data = Arrays.copyOf(data, data.length);
         size = data.length;
     }
 
-    public IntArrayList()
-    {
+    public IntArrayList() {
         data = new int[10];
         size = 0;
     }
@@ -26,27 +24,23 @@ public class IntArrayList
     /**
      * @return Returns count of stored elements
      */
-    public int getSize()
-    {
+    public int getSize() {
         return size;
     }
 
     /**
      * @return Array length synonym
      */
-    private int getCapacity()
-    {
+    private int getCapacity() {
         return data.length;
     }
 
     /**
      * Check if data array can get required number of elements.
      *
-     * @param requiredCapacity
-     * 		Required length of data array
+     * @param requiredCapacity Required length of data array
      */
-    private void ensureCapacity(int requiredCapacity)
-    {
+    private void ensureCapacity(int requiredCapacity) {
         if (requiredCapacity <= getCapacity()) {
             return;
         }
@@ -57,11 +51,9 @@ public class IntArrayList
     /**
      * Adds value to array add updates size.
      *
-     * @param value
-     * 		Value to add in array
+     * @param value Value to add in array
      */
-    public void add(int value)
-    {
+    public void add(int value) {
         ensureCapacity(size + 1);
         data[size] = value;
         size += 1;
@@ -70,17 +62,12 @@ public class IntArrayList
     /**
      * Returns element stored at <code>index</code>.
      *
-     * @param index
-     * 		Index of element to return
-     *
+     * @param index Index of element to return
      * @return Returns the element stored at <code>index</code>
-     *
-     * @throws IndexOutOfBoundsException
-     * 		if <code>index</code> out of range
-     * 		from zero to size of the list
+     * @throws IndexOutOfBoundsException if <code>index</code> out of range from zero to size of the
+     * list
      */
-    public int get(int index)
-    {
+    public int get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
@@ -92,13 +79,10 @@ public class IntArrayList
      * Method uses recursive way to find a maximum value.
      *
      * @return Returns maximum value of array
-     *
-     * @throws NoSuchElementException
-     * 		If array has no elements yet
+     * @throws NoSuchElementException If array has no elements yet
      * @see #getMaxValueRecursive
      */
-    public int maxValueInefficient()
-    {
+    public int maxValueInefficient() {
         if (size == 0) {
             throw new NoSuchElementException();
         }
@@ -106,18 +90,12 @@ public class IntArrayList
     }
 
     /**
-     * @param data
-     * 		Array to find maximum value
-     * @param startInclusive
-     * 		Index to start
-     * @param endExclusive
-     * 		Index to finish
-     *
-     * @return Maximum value of passed {@code data} array on a passed
-     * range
+     * @param data Array to find maximum value
+     * @param startInclusive Index to start
+     * @param endExclusive Index to finish
+     * @return Maximum value of passed {@code data} array on a passed range
      */
-    private int getMaxValueRecursive(int[] data, int startInclusive, int endExclusive)
-    {
+    private int getMaxValueRecursive(int[] data, int startInclusive, int endExclusive) {
         final int length = endExclusive - startInclusive;
 
         if (length == 1) {
@@ -137,24 +115,19 @@ public class IntArrayList
     /**
      * Sort array using recursive way.
      *
-     * @param strategy
-     * 		Object of sorting strategy class
+     * @param strategy Object of sorting strategy class
      */
-    public void sort(Sorter strategy)
-    {
+    public void sort(Sorter strategy) {
         data = strategy.sort(this.data);
     }
 
     /**
      * Expects collection to be sorted.
      *
-     * @param value
-     * 		Value to find in collection
-     *
+     * @param value Value to find in collection
      * @return Index of the value or -indexToInsert - 1
      */
-    public int binarySearch(int value)
-    {
+    public int binarySearch(int value) {
         int index = -1;
 
         if (size != 0) {

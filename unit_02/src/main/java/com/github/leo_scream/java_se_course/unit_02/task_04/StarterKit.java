@@ -6,17 +6,15 @@ import java.util.stream.Stream;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class StarterKit<T>
-{
+public class StarterKit<T> {
+
     private final T[] objects;
 
-    public StarterKit(T[] objects)
-    {
+    public StarterKit(T[] objects) {
         this.objects = objects;
     }
 
-    public Stream<T> objects()
-    {
+    public Stream<T> objects() {
         return Arrays.stream(objects);
     }
 }

@@ -36,19 +36,19 @@ class CrazyLoggerTest extends Specification {
         def expected = "Must appear in filtered"
 
         logger.log(unexpected)
-              .log(expected)
-              .log(unexpected)
-              .log(expected)
-              .log(expected)
-              .log(unexpected)
-              .log(unexpected)
-              .log(unexpected)
+            .log(expected)
+            .log(unexpected)
+            .log(expected)
+            .log(expected)
+            .log(unexpected)
+            .log(unexpected)
+            .log(unexpected)
 
         expect:
         logger.messages()
             .filter({
-                message -> message.getText().contains("Must appear")
-            })
+            message -> message.getText().contains("Must appear")
+        })
             .count() == 3
     }
 }

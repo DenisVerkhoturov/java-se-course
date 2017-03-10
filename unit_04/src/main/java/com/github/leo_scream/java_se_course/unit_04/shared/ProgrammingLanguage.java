@@ -15,8 +15,7 @@ public class ProgrammingLanguage {
         this.keywords = keywords;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 

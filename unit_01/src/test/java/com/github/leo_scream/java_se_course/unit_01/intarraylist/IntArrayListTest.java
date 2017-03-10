@@ -1,20 +1,18 @@
 package com.github.leo_scream.java_se_course.unit_01.intarraylist;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.Random;
-
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class IntArrayListTest
-{
+public class IntArrayListTest {
+
     @Test
-    public void add() throws Exception
-    {
+    public void add() throws Exception {
         final IntArrayList list = new IntArrayList();
         list.add(42);
         assertEquals(list.get(0), 42);
@@ -27,8 +25,7 @@ public class IntArrayListTest
     }
 
     @Test
-    public void get() throws Exception
-    {
+    public void get() throws Exception {
         final IntArrayList list = new IntArrayList();
         list.add(42);
         assertEquals("Got unexpected value.", 42, list.get(0));
@@ -39,8 +36,7 @@ public class IntArrayListTest
     }
 
     @Test
-    public void getSize() throws Exception
-    {
+    public void getSize() throws Exception {
         final IntArrayList list = new IntArrayList();
         assertEquals("Just instantiated list must have a size zero.", 0,
             list.getSize());
@@ -50,8 +46,7 @@ public class IntArrayListTest
     }
 
     @Test
-    public void maxValueInefficient() throws Exception
-    {
+    public void maxValueInefficient() throws Exception {
         final int[] values = new Random()
             .ints(256, Integer.MIN_VALUE, Integer.MAX_VALUE)
             .sorted()
@@ -67,8 +62,7 @@ public class IntArrayListTest
     }
 
     @Test
-    public void sort() throws Exception
-    {
+    public void sort() throws Exception {
         final int[] values = new Random()
             .ints(256, Integer.MIN_VALUE, Integer.MAX_VALUE)
             .toArray();
@@ -90,8 +84,7 @@ public class IntArrayListTest
     }
 
     @Test
-    public void binarySearch() throws Exception
-    {
+    public void binarySearch() throws Exception {
         final int[] values = {
             Integer.MAX_VALUE, -1889, -1, 0, 1, 42, Integer.MAX_VALUE
         };

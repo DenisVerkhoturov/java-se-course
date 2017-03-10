@@ -13,12 +13,11 @@ import java.util.regex.Pattern;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class Solution
-{
+public class Solution {
+
     private String text;
 
-    public static void main(String[] args) throws URISyntaxException, IOException
-    {
+    public static void main(String[] args) throws URISyntaxException, IOException {
         Solution app = new Solution();
         app.text = new String(
             Files.readAllBytes(Paths.get(Solution.class.getResource("index.html").toURI())),

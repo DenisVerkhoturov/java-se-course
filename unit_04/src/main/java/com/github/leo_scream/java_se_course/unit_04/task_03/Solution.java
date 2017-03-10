@@ -19,7 +19,7 @@ public class Solution {
         }
         File sourceFile = new File(args[0]);
         File destinationFile = File.createTempFile("converted", ".txt");
-        try(
+        try (
             InputStreamReader reader = new InputStreamReader(
                 new FileInputStream(sourceFile), StandardCharsets.UTF_8
             );

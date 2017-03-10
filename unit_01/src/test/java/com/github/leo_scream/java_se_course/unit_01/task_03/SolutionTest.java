@@ -5,11 +5,10 @@ import org.junit.Test;
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
-public class SolutionTest
-{
+public class SolutionTest {
+
     @Test
-    public void onRange() throws Exception
-    {
+    public void onRange() throws Exception {
         Solution solution = new Solution(0.1);
         solution.onRange(0, 1);
     }
