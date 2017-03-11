@@ -16,6 +16,7 @@
 - [Unit 02. Object-oriented programming in Java](unit_02/)
 - [Unit 03. Information handling](unit_03/)
 - [Unit 04. I/O Streams](unit_04/)
+- [Unit 05. Exceptions and Errors](unit_05/)
 
 ---
 

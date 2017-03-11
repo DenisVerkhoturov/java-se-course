@@ -26,7 +26,8 @@ def exportedProjects = [
     'unit_01',
     'unit_02',
     'unit_03',
-    'unit_04'
+    'unit_04',
+    'unit_05'
 ]
 
 task docs(type: Javadoc) {

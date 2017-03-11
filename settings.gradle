@@ -1,3 +1,4 @@
 rootProject.name = 'JavaSECourse'
 
-include 'unit_01', 'unit_02', 'unit_03', 'unit_04'
+include 'unit_01', 'unit_02', 'unit_03', 'unit_04', 'unit_05'
+
