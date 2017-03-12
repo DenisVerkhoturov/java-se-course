@@ -1,6 +1,5 @@
 package com.github.leo_scream.java_se_course.unit_03.task_02;
 
-import java.io.InputStream;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,8 +18,8 @@ public class FAQ extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        InputStream inputStream = getClass().getResourceAsStream("views/main.fxml");
-        AnchorPane root = loader.load(inputStream);
+        loader.setLocation(getClass().getResource("views/main.fxml"));
+        AnchorPane root = loader.load();
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
