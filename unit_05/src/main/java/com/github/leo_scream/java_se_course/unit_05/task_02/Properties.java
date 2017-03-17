@@ -38,7 +38,7 @@ public class Properties {
         return new Properties(file, properties);
     }
 
-    public String getProperty(String key) throws NoSuchPropertyException {
+    public String get(String key) throws NoSuchPropertyException {
         return filePropertiesMap.get(file).get(key);
     }
 
