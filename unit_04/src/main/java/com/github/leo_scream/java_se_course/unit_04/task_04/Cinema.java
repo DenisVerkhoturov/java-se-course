@@ -1,11 +1,13 @@
 package com.github.leo_scream.java_se_course.unit_04.task_04;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -20,8 +22,9 @@ public class Cinema extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        InputStream inputStream = getClass().getResourceAsStream("views/main.fxml");
-        AnchorPane root = loader.load(inputStream);
+        loader.setLocation(getClass().getResource("views/main.fxml"));
+        loader.setControllerFactory(this::singletonFactory);
+        GridPane root = loader.load();
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
@@ -29,5 +32,21 @@ public class Cinema extends Application {
         primaryStage.setMinWidth(400);
         primaryStage.setTitle("Cinema");
         primaryStage.show();
+    }
+
+    private Object singletonFactory(Class<?> controllerClass) {
+        List<Method> methods = Arrays.asList(controllerClass.getMethods());
+
+        try {
+            for (Method method : methods) {
+                if ("getInstance".equals(method.getName())) {
+                    return method.invoke(null, null);
+                }
+            }
+            return controllerClass.newInstance();
+        } catch (Exception e) {
+            new RuntimeException("Can't instantiate controller " + controllerClass.getName(), e);
+        }
+        return null;
     }
 }

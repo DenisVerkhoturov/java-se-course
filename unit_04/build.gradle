@@ -1,0 +1,4 @@
+dependencies {
+    compile project(":flux")
+    compile 'org.projectlombok:lombok:1.16.14'
+}

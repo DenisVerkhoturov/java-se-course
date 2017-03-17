@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-    prefHeight="400.0"
-    prefWidth="600.0"
-    xmlns="http://javafx.com/javafx/8.0.65"
-    fx:controller="com.github.leo_scream.java_se_course.unit_04.task_04.controllers.Main">
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane fx:id="root" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.leo_scream.java_se_course.unit_04.task_04.components.Main">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="NEVER" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="ALWAYS" />
+    </rowConstraints>
+    <padding>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+    </padding>
     <children>
-        <ButtonBar
-            AnchorPane.leftAnchor="25.0"
-            AnchorPane.rightAnchor="25.0"
-            AnchorPane.topAnchor="15.0">
+        <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <buttons>
-                <Button mnemonicParsing="false" text="New" fx:id="newMovie"/>
+                <Button fx:id="deleteButton" text="Delete" />
+                <Button fx:id="editButton" text="Edit" />
+                <Button fx:id="addButton" text="New" />
             </buttons>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
         </ButtonBar>
-        <ListView AnchorPane.leftAnchor="350.0"
-            AnchorPane.rightAnchor="25.0"
-            AnchorPane.topAnchor="70.0"
-            fx:id="movieList"/>
-        <VBox AnchorPane.leftAnchor="25.0"
-            AnchorPane.rightAnchor="270.0"
-            AnchorPane.topAnchor="70.0"
-            fx:id="movieCard"/>
+        <fx:include fx:id="moviesList" source="movies-list.fxml" GridPane.columnSpan="5" GridPane.rowIndex="1" />
+        <fx:include fx:id="movieEditor" source="movie-edit.fxml" visible="false" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="1" />
     </children>
-</AnchorPane>
+</GridPane>
