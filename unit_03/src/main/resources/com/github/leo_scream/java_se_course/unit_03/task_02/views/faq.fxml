@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Accordion?>
-<Accordion xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="com.github.leo_scream.java_se_course.unit_03.task_02.components.FAQ"
-    fx:id="faqAccordion"/>

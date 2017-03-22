@@ -6,6 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
@@ -25,7 +29,7 @@ public class FAQ extends Application {
         primaryStage.setScene(scene);
         primaryStage.setMinHeight(600);
         primaryStage.setMinWidth(400);
-        primaryStage.setTitle("FAQ");
+        primaryStage.setTitle("Controller");
         primaryStage.show();
     }
 }
