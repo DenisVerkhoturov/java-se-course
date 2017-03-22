@@ -3,9 +3,7 @@ package com.github.leo_scream.java_se_course.unit_04.task_04.components;
 import com.github.leo_scream.java_se_course.unit_04.task_04.business.Movie;
 import com.github.leo_scream.java_se_course.unit_04.task_04.stores.MovieStore;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.util.Callback;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com

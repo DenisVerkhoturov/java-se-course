@@ -1,6 +1,6 @@
 package com.github.leo_scream.java_se_course.unit_04.task_04.actions;
 
-import com.github.leo_scream.flux.AbstractAction;
+import com.github.leo_scream.java_se_course.unit_04.flux.AbstractAction;
 import com.github.leo_scream.java_se_course.unit_04.task_04.business.Movie;
 
 /**

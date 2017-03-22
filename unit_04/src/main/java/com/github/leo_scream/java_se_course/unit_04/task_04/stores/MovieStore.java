@@ -1,8 +1,8 @@
 package com.github.leo_scream.java_se_course.unit_04.task_04.stores;
 
-import com.github.leo_scream.flux.AbstractStore;
-import com.github.leo_scream.flux.Action;
-import com.github.leo_scream.flux.Dispatcher;
+import com.github.leo_scream.java_se_course.unit_04.flux.AbstractStore;
+import com.github.leo_scream.java_se_course.unit_04.flux.Action;
+import com.github.leo_scream.java_se_course.unit_04.flux.Dispatcher;
 import com.github.leo_scream.java_se_course.unit_04.task_04.actions.AddMovieAction;
 import com.github.leo_scream.java_se_course.unit_04.task_04.actions.DeleteMovieAction;
 import com.github.leo_scream.java_se_course.unit_04.task_04.actions.UpdateMovieAction;

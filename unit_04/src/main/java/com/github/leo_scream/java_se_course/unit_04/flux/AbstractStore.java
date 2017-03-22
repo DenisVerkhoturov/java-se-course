@@ -1,4 +1,4 @@
-package com.github.leo_scream.flux;
+package com.github.leo_scream.java_se_course.unit_04.flux;
 
 import java.util.HashSet;
 import java.util.Set;

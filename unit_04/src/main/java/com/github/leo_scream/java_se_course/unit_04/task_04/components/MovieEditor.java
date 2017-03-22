@@ -1,6 +1,6 @@
 package com.github.leo_scream.java_se_course.unit_04.task_04.components;
 
-import com.github.leo_scream.flux.Dispatcher;
+import com.github.leo_scream.java_se_course.unit_04.flux.Dispatcher;
 import com.github.leo_scream.java_se_course.unit_04.task_04.actions.AddMovieAction;
 import com.github.leo_scream.java_se_course.unit_04.task_04.business.Actor;
 import com.github.leo_scream.java_se_course.unit_04.task_04.business.Movie;
