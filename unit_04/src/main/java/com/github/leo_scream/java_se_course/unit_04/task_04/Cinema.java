@@ -40,13 +40,12 @@ public class Cinema extends Application {
         try {
             for (Method method : methods) {
                 if ("getInstance".equals(method.getName())) {
-                    return method.invoke(null, null);
+                    return method.invoke(null);
                 }
             }
             return controllerClass.newInstance();
         } catch (Exception e) {
-            new RuntimeException("Can't instantiate controller " + controllerClass.getName(), e);
+            throw new RuntimeException("Can't instantiate controller " + controllerClass.getName(), e);
         }
-        return null;
     }
 }
