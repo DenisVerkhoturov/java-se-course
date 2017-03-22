@@ -1,9 +1,9 @@
-group = 'com.github.leo_scream.java_se_cource'
-version = '1.0'
-
 allprojects {
     apply plugin: 'java'
     apply plugin: 'groovy'
+
+    group = 'com.github.leo_scream.java_se_cource'
+    version = '1.0'
 }
 
 subprojects {
