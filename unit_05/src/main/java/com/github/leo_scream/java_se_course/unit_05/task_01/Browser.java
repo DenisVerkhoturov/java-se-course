@@ -38,15 +38,12 @@ public class Browser extends Application {
         try {
             for (Method method : methods) {
                 if ("getInstance".equals(method.getName())) {
-                    return method.invoke(null, null);
+                    return method.invoke(null);
                 }
             }
             return controllerClass.newInstance();
         } catch (Exception e) {
-            System.err.println(
-                "Can't instantiate controller " + controllerClass.getName() + ". Cause is: " + e
-                    .getMessage());
+            throw new RuntimeException("Can't instantiate controller " + controllerClass.getName(), e);
         }
-        return null;
     }
 }
