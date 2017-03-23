@@ -5,6 +5,9 @@ class Doctor extends MedicalStaff {}
 class Nurse extends MedicalStaff {}
 class HeadDoctor extends Doctor {}
 ```
+##### Legend
+- :heavy_plus_sign: - correct
+- :heavy_minus_sign: - incorrect
 
 | Assignment | Is correct | Explanation |
 |:-----------|:----------:|:------------|
