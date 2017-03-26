@@ -7,6 +7,7 @@ import com.github.leo_scream.java_se_course.unit_04.task_04.actions.AddMovieActi
 import com.github.leo_scream.java_se_course.unit_04.task_04.actions.DeleteMovieAction;
 import com.github.leo_scream.java_se_course.unit_04.task_04.actions.UpdateMovieAction;
 import com.github.leo_scream.java_se_course.unit_04.task_04.business.Movie;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -20,10 +21,22 @@ public class MovieStore extends AbstractStore {
     private final Set<Movie> movies;
     private Movie currentMovie;
 
-    private MovieStore()
-    {
+    private MovieStore() {
         movies = new HashSet<>();
         Dispatcher.getInstance().register(this);
+    }
+
+    public static MovieStore getInstance() {
+        MovieStore localInstance = instance;
+        if (localInstance == null) {
+            synchronized (MovieStore.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    localInstance = instance = new MovieStore();
+                }
+            }
+        }
+        return localInstance;
     }
 
     @Override
@@ -56,19 +69,6 @@ public class MovieStore extends AbstractStore {
         movies.remove(action.getOldMovie());
         movies.add(action.getNewMovie());
         publishOnChange();
-    }
-
-    public static MovieStore getInstance() {
-        MovieStore localInstance = instance;
-        if (localInstance == null) {
-            synchronized (MovieStore.class) {
-                localInstance = instance;
-                if (localInstance == null) {
-                    localInstance = instance = new MovieStore();
-                }
-            }
-        }
-        return localInstance;
     }
 
     public Stream<Movie> getMovies() {

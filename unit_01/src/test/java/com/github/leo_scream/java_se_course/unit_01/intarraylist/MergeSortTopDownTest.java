@@ -1,10 +1,11 @@
 package com.github.leo_scream.java_se_course.unit_01.intarraylist;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import org.junit.Test;
 
 import java.util.Random;
-import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com

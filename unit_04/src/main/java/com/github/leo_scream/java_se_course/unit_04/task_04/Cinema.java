@@ -1,14 +1,15 @@
 package com.github.leo_scream.java_se_course.unit_04.task_04;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com

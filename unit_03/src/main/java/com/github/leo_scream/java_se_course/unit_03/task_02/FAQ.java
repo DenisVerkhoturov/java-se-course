@@ -6,10 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */

@@ -109,10 +109,10 @@ public class Notebook {
     /**
      * Update note under index {@code i}.
      *
-     * @param i Index of {@code note} which will be updated
+     * @param i    Index of {@code note} which will be updated
      * @param note {@code note} to insert
      * @throws IndexOutOfBoundsException If {@code i} negative or bigger that {@code size}
-     * @throws IllegalArgumentException If {@code note} is {@code null}
+     * @throws IllegalArgumentException  If {@code note} is {@code null}
      */
     public void update(int i, Note note) {
         nullCheck(note);

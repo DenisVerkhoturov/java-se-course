@@ -2,6 +2,6 @@
 
 <?import javafx.scene.control.TabPane?>
 <TabPane xmlns:fx="http://javafx.com/fxml/1"
-    xmlns="http://javafx.com/javafx/8.0.65"
-    fx:id="tabPane"
-    fx:controller="com.github.leo_scream.java_se_course.unit_05.task_01.controllers.FileEditor"/>
+         xmlns="http://javafx.com/javafx/8.0.65"
+         fx:id="tabPane"
+         fx:controller="com.github.leo_scream.java_se_course.unit_05.task_01.controllers.FileEditor"/>

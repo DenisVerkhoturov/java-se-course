@@ -11,14 +11,25 @@ import javafx.scene.control.ListView;
 public class MoviesList {
 
     private static volatile MoviesList instance;
-
+    private final MovieStore movieStore;
     @FXML
     private ListView<Movie> moviesList;
 
-    private final MovieStore movieStore;
-
     private MoviesList() {
         movieStore = MovieStore.getInstance();
+    }
+
+    public static MoviesList getInstance() {
+        MoviesList localInstance = instance;
+        if (localInstance == null) {
+            synchronized (MoviesList.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    localInstance = instance = new MoviesList();
+                }
+            }
+        }
+        return localInstance;
     }
 
     public void initialize() {
@@ -36,18 +47,5 @@ public class MoviesList {
 
     public void maximize() {
         Main.getInstance().getGridPane().setColumnSpan(moviesList, 5);
-    }
-
-    public static MoviesList getInstance() {
-        MoviesList localInstance = instance;
-        if (localInstance == null) {
-            synchronized (MoviesList.class) {
-                localInstance = instance;
-                if (localInstance == null) {
-                    localInstance = instance = new MoviesList();
-                }
-            }
-        }
-        return localInstance;
     }
 }

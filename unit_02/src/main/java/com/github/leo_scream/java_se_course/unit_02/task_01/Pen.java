@@ -1,6 +1,6 @@
 package com.github.leo_scream.java_se_course.unit_02.task_01;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com

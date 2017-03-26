@@ -4,8 +4,6 @@ import com.github.leo_scream.java_se_course.unit_04.flux.Dispatcher;
 import com.github.leo_scream.java_se_course.unit_04.task_04.actions.AddMovieAction;
 import com.github.leo_scream.java_se_course.unit_04.task_04.business.Actor;
 import com.github.leo_scream.java_se_course.unit_04.task_04.business.Movie;
-import java.util.Set;
-import java.util.stream.Collectors;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -15,13 +13,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
 public class MovieEditor {
 
     private static volatile MovieEditor instance;
-
+    private final ObjectProperty<Movie> movie;
     @FXML
     public VBox movieEditor;
     @FXML
@@ -35,10 +36,21 @@ public class MovieEditor {
     @FXML
     private TextField titleTextField;
 
-    private final ObjectProperty<Movie> movie;
-
     private MovieEditor() {
         movie = new SimpleObjectProperty<>(new Movie());
+    }
+
+    public static MovieEditor getInstance() {
+        MovieEditor localInstance = instance;
+        if (localInstance == null) {
+            synchronized (MovieEditor.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    localInstance = instance = new MovieEditor();
+                }
+            }
+        }
+        return localInstance;
     }
 
     public void initialize() {
@@ -106,18 +118,5 @@ public class MovieEditor {
 
     void setMovie(Movie movie) {
         this.movie.setValue(movie);
-    }
-
-    public static MovieEditor getInstance() {
-        MovieEditor localInstance = instance;
-        if (localInstance == null) {
-            synchronized (MovieEditor.class) {
-                localInstance = instance;
-                if (localInstance == null) {
-                    localInstance = instance = new MovieEditor();
-                }
-            }
-        }
-        return localInstance;
     }
 }

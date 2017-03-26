@@ -15,14 +15,6 @@ public class Dispatcher {
         stores = new HashSet<>();
     }
 
-    public void dispatch(final Action action) {
-        stores.forEach(store -> store.processAction(action));
-    }
-
-    public void register(final Store store) {
-        stores.add(store);
-    }
-
     public static Dispatcher getInstance() {
         Dispatcher localInstance = instance;
         if (localInstance == null) {
@@ -34,5 +26,13 @@ public class Dispatcher {
             }
         }
         return localInstance;
+    }
+
+    public void dispatch(final Action action) {
+        stores.forEach(store -> store.processAction(action));
+    }
+
+    public void register(final Store store) {
+        stores.add(store);
     }
 }

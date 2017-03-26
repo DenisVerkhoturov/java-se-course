@@ -1,19 +1,16 @@
 package com.github.leo_scream.java_se_course.unit_05.task_01.controllers;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Optional;
 import javafx.fxml.FXML;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.util.StringConverter;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Optional;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com

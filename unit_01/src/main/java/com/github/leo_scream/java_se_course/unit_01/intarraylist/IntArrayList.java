@@ -65,7 +65,7 @@ public class IntArrayList {
      * @param index Index of element to return
      * @return Returns the element stored at <code>index</code>
      * @throws IndexOutOfBoundsException if <code>index</code> out of range from zero to size of the
-     * list
+     *                                   list
      */
     public int get(int index) {
         if (index < 0 || index >= size) {
@@ -90,9 +90,9 @@ public class IntArrayList {
     }
 
     /**
-     * @param data Array to find maximum value
+     * @param data           Array to find maximum value
      * @param startInclusive Index to start
-     * @param endExclusive Index to finish
+     * @param endExclusive   Index to finish
      * @return Maximum value of passed {@code data} array on a passed range
      */
     private int getMaxValueRecursive(int[] data, int startInclusive, int endExclusive) {

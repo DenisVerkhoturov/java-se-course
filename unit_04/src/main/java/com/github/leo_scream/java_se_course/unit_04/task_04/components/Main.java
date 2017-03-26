@@ -30,6 +30,19 @@ public class Main {
     private Main() {
     }
 
+    public static Main getInstance() {
+        Main localInstance = instance;
+        if (localInstance == null) {
+            synchronized (Main.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    localInstance = instance = new Main();
+                }
+            }
+        }
+        return localInstance;
+    }
+
     public void initialize() {
         addButton.setOnMouseClicked(
             event -> {
@@ -60,18 +73,5 @@ public class Main {
 
     GridPane getGridPane() {
         return root;
-    }
-
-    public static Main getInstance() {
-        Main localInstance = instance;
-        if (localInstance == null) {
-            synchronized (Main.class) {
-                localInstance = instance;
-                if (localInstance == null) {
-                    localInstance = instance = new Main();
-                }
-            }
-        }
-        return localInstance;
     }
 }

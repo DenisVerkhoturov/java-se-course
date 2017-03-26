@@ -69,7 +69,7 @@ public class CrazyLogger {
      * Make text safe to keep logged.
      *
      * @param text To clean from delimiters which {@link CrazyLogger} uses to separate date and text
-     * of message
+     *             of message
      * @return Safe to keep logged string
      */
     private String clean(String text) {

@@ -1,20 +1,16 @@
 package com.github.leo_scream.java_se_course.unit_05.task_01.controllers;
 
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 import java.util.Map;
-import javafx.event.Event;
-import javafx.fxml.FXML;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.KeyCode;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com

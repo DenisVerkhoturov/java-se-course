@@ -1,9 +1,9 @@
 package com.github.leo_scream.java_se_course.unit_01.intset;
 
+import org.junit.Test;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com

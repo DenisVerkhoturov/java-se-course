@@ -1,16 +1,17 @@
 package com.github.leo_scream.java_se_course.unit_04.task_01;
 
-import static java.util.function.Function.identity;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.summingInt;
-
 import com.github.leo_scream.java_se_course.unit_04.shared.ProgrammingLanguage;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
+
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.summingInt;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
