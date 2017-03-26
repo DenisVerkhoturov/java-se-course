@@ -6,41 +6,40 @@ import spock.lang.Specification;
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
 class NotebookTest extends Specification {
-    def Notebook notebook = new Notebook()
-    def Note[] notes = [
-        new Note(), new Note(), new Note(), new Note(), new Note()
-    ]
-    def Note specialNote = notes[1]
+    Notebook notebook
+    Note specialNote
+
+    def setup() {
+        notebook = new Notebook()
+        (1..10).each { notebook.add(new Note()) }
+        specialNote = notebook.get(4)
+    }
 
     def "Initialized notebook has zero size"() {
         expect:
-        notebook.getSize() == 0
+        new Notebook().getSize() == 0
     }
 
     def "Size changes after adding"() {
-        setup:
+        when:
         notebook.add(new Note())
 
-        expect:
-        notebook.getSize() == 1
+        then:
+        notebook.getSize() == old(notebook.size) + 1
     }
 
     def "Size changes after removing"() {
-        setup:
-        notes.each { note -> notebook.add(note) }
-        def size = notebook.getSize()
-
         when:
         notebook.remove(specialNote)
 
         then:
-        notebook.getSize() == size - 1
+        notebook.getSize() == old(notebook.size) - 1
     }
 
     def "Add method returns exact index of added note"() {
         setup:
-        def Note note = new Note()
-        def index = notebook.add(note);
+        def note = new Note()
+        def index = notebook.add(note)
 
         expect:
         notebook.get(index) == note
@@ -55,20 +54,14 @@ class NotebookTest extends Specification {
     }
 
     def "Removing by valid index"() {
-        setup:
-        notes.each { note -> notebook.add(note) }
-
         when:
         notebook.remove(specialNote)
 
         then:
-        [1..notebook.getSize()].each { note -> note != specialNote }
+        (0..notebook.getSize() - 1).each { i -> notebook.get(i) != specialNote }
     }
 
     def "Removing by negative index throws IndexOutOfBoundsException"() {
-        setup:
-        notes.each { note -> notebook.add(note) }
-
         when:
         notebook.remove(-1)
 
@@ -77,9 +70,6 @@ class NotebookTest extends Specification {
     }
 
     def "Removing by index bigger than size throws IndexOutOfBoundsException"() {
-        setup:
-        notes.each { note -> notebook.add(note) }
-
         when:
         notebook.remove(notebook.getSize() * 2)
 

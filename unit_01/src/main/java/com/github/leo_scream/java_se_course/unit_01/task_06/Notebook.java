@@ -54,7 +54,7 @@ public class Notebook {
 
     private void smartRemove(int i) {
         if (size > 1) {
-            System.arraycopy(notes, i + 1, notes, i, size - 1);
+            System.arraycopy(notes, i + 1, notes, i, size - i - 1);
         } else {
             notes = new Note[0];
         }
