@@ -1,8 +1,11 @@
 package com.github.leo_scream.java_se_course.unit_07.task_01;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
+@XmlRootElement
 public class Account {
     private final long id;
     private volatile long balance;
@@ -28,6 +31,10 @@ public class Account {
     public void decrease(final long value) {
         if (value < 0) throw new IllegalArgumentException("Value can not be negative");
         balance -= value;
+    }
+
+    public long getBalance() {
+        return balance;
     }
 
     @Override

@@ -1,16 +1,18 @@
 package com.github.leo_scream.java_se_course.unit_07.task_01;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
+@XmlRootElement
 public class Transfer {
     private final Account sender;
     private final Account recipient;
     private final long amount;
 
-    private Transfer(final Account sender, final Account recipient, final long amount) {
+    public Transfer(final Account sender, final Account recipient, final long amount) {
         this.sender = sender;
         this.recipient = recipient;
         this.amount = amount;
