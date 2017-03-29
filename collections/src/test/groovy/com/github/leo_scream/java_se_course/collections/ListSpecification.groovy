@@ -1,9 +1,19 @@
 package com.github.leo_scream.java_se_course.collections
 
+import spock.lang.Shared
 import spock.lang.Specification
 
 class ListSpecification extends Specification {
     private List<String> list
+    @Shared
+    private String[] listElements
+    @Shared
+    private notContainedElement
+
+    def setupSpec() {
+        listElements = ["apple", null, "orange", null, "tomato", null, "potato"]
+        notContainedElement = "planet"
+    }
 
     def setup() {
         list = new LinkedList()
@@ -35,24 +45,62 @@ class ListSpecification extends Specification {
 
     def "After adding list is not empty and size increases"() {
         when:
-        list.add(new String())
+        list.add(element)
 
         then:
         list.size() == old(list.size()) + 1
 
         and:
         !list.isEmpty()
+
+        where:
+        element << listElements
     }
 
     def "List contains element after adding"() {
-        given:
-        String element = "element"
-
         when:
         list.add(element)
 
         then:
         list.contains(element)
+
+        where:
+        element << listElements
+    }
+
+    def "List contains all elements after adding"() {
+        setup:
+        list.addAll(listElements)
+
+        expect:
+        list.containsAll(listElements)
+    }
+
+    def "Index of null not throws exception"() {
+        setup:
+        list.addAll(listElements)
+
+        when:
+        list.indexOf(null)
+
+        then:
+        notThrown(NullPointerException)
+    }
+
+    def "Index of element which does not contained in list is -1"() {
+        expect:
+        list.indexOf(notContainedElement) == -1
+    }
+
+    def "Element can be received by this index in list"() {
+        setup:
+        list.addAll(listElements)
+
+        expect:
+        list.get(list.indexOf(element)) == element
+
+        where:
+        element << listElements
     }
 
     def "Removing null element not throws NullPointerException"() {
@@ -79,70 +127,28 @@ class ListSpecification extends Specification {
         thrown(IndexOutOfBoundsException)
     }
 
-    def "After removing by valid index list not contains element"() {
-        given:
-        String element = "element"
-        list.add(element)
-        int index = list.indexOf(element)
+    def "Removing by valid index returns removed element"() {
+        setup:
+        list.addAll(listElements)
 
-        when:
-        list.remove(index)
+        expect:
+        element == list.remove(list.indexOf(element))
 
-        then:
-        !list.contains(element)
-    }
-
-    def "List is not contains element after removing"() {
-        given:
-        String element = "element"
-
-        when:
-        list.add(element)
-        list.remove(element)
-
-        then:
-        !list.contains(element)
+        where:
+        element << listElements
     }
 
     def "After removing size decreases"() {
-        given:
-        String element = "element"
-        list.add(element)
+        setup:
+        list.addAll(listElements)
 
         when:
-        list.remove(element)
+        list.remove(list.indexOf(element))
 
         then:
         list.size() == old(list.size()) - 1
-    }
 
-    def "Index of null not throwns exception"() {
-        given:
-        String element = "element"
-        list.add(element)
-
-        when:
-        list.indexOf(null)
-
-        then:
-        notThrown(NullPointerException)
-    }
-
-    def "Index of element which does not contained in list is -1"() {
-        setup:
-        String element = "element list not contains"
-
-        expect:
-        list.indexOf(element) == -1
-    }
-
-    def "Element can be received by this index in list"() {
-        setup:
-        String element = "element"
-        list.add(element)
-        int index = list.indexOf(element)
-
-        expect:
-        list.get(index) == element
+        where:
+        element << listElements
     }
 }
