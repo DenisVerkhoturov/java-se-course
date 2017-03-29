@@ -115,4 +115,34 @@ class ListSpecification extends Specification {
         then:
         list.size() == old(list.size()) - 1
     }
+
+    def "Index of null not throwns exception"() {
+        given:
+        String element = "element"
+        list.add(element)
+
+        when:
+        list.indexOf(null)
+
+        then:
+        notThrown(NullPointerException)
+    }
+
+    def "Index of element which does not contained in list is -1"() {
+        setup:
+        String element = "element list not contains"
+
+        expect:
+        list.indexOf(element) == -1
+    }
+
+    def "Element can be received by this index in list"() {
+        setup:
+        String element = "element"
+        list.add(element)
+        int index = list.indexOf(element)
+
+        expect:
+        list.get(index) == element
+    }
 }

@@ -150,7 +150,20 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        return null;
+        checkBounds(index);
+        T element = null;
+
+        if (index < (size / 2)) {
+            for (Node<T> node = head; index >= 0; node = node.next, index--) {
+                element = node.value;
+            }
+        } else {
+            for (Node<T> node = tail; index >= 0; node = node.previous, index--) {
+                element = node.value;
+            }
+        }
+
+        return element;
     }
 
     @Override
@@ -166,15 +179,42 @@ public class LinkedList<T> implements List<T> {
     @Override
     public T remove(int index) {
         checkBounds(index);
-        for (Node<T> node = head; node != null; node = node.next, index--) {
-            if (index == 0) return remove(node);
+        Node<T> node;
+
+        if (index < (size / 2)) {
+            node = head;
+            while (index > 0) {
+                node = node.next;
+                index -= 1;
+            }
+        } else {
+            node = tail;
+            while (index > 0) {
+                node = node.previous;
+                index -= 1;
+            }
         }
-        return null;
+
+        return remove(node);
     }
 
     @Override
-    public int indexOf(Object o) {
-        return 0;
+    public int indexOf(Object needle) {
+        int index = 0;
+        boolean isFound = false;
+        if (needle == null) {
+            for (Node<T> node = head; node != null; node = node.next, index++) {
+                isFound = node.value == null;
+                if (isFound) break;
+            }
+        } else {
+            for (Node<T> node = tail; node != null; node = node.previous, index++) {
+                isFound = needle.equals(node.value);
+                if (isFound) break;
+            }
+        }
+
+        return isFound ? index : -1;
     }
 
     @Override
