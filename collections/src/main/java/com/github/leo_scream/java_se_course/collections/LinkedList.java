@@ -95,29 +95,6 @@ public class LinkedList<T> implements List<T> {
         return isDeleted;
     }
 
-    private T remove(Node node) {
-        final Node previous = node.previous;
-        final Node next = node.next;
-
-        if (previous == null) {
-            head = next;
-        } else {
-            previous.next = next;
-            node.previous = null;
-        }
-
-        if (next == null) {
-            tail = previous;
-        } else {
-            next.previous = previous;
-            node.next = null;
-        }
-
-        size -= 1;
-
-        return node.value;
-    }
-
     @Override
     public boolean containsAll(Collection<?> c) {
         return c.stream().allMatch(this::contains);
@@ -232,6 +209,29 @@ public class LinkedList<T> implements List<T> {
 
     private void checkBounds(int index) {
         if (index < 0 || index >= size) throw new IndexOutOfBoundsException();
+    }
+
+    private T remove(Node node) {
+        final Node previous = node.previous;
+        final Node next = node.next;
+
+        if (previous == null) {
+            head = next;
+        } else {
+            previous.next = next;
+            node.previous = null;
+        }
+
+        if (next == null) {
+            tail = previous;
+        } else {
+            next.previous = previous;
+            node.next = null;
+        }
+
+        size -= 1;
+
+        return node.value;
     }
 
     private class Node {

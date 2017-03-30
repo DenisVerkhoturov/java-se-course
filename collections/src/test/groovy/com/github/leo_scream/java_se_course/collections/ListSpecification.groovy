@@ -136,12 +136,63 @@ class ListSpecification extends Specification {
         element << listElements
     }
 
+    def "After removing by value size decreases"() {
+        setup:
+        list.addAll(listElements)
+
+        when:
+        list.remove(element)
+
+        then:
+        list.size() == old(list.size()) - 1
+
+        where:
+        element << listElements
+    }
+
     def "Removing null element not throws NullPointerException"() {
         when:
         list.remove(null)
 
         then:
         notThrown(NullPointerException)
+    }
+
+    def "Removing element which not contained in list returns false"() {
+        expect:
+        !list.remove(notContainedElement)
+    }
+
+    def "After removing list is the same except removed element"() {
+        given:
+        list.addAll(listElements)
+
+        when:
+        list.remove(element)
+
+        then:
+        listElements.every({
+            item ->
+                if (item != element) return list.contains(item)
+                else return true
+        })
+
+        where:
+        element << listElements
+    }
+
+    def "After removing by index size decreases"() {
+        setup:
+        list.addAll(listElements)
+
+        when:
+        list.remove(list.indexOf(element))
+
+        then:
+        list.size() == old(list.size()) - 1
+
+        where:
+        element << listElements
     }
 
     def "Removing by negative index throws IndexOutOfBoundsException"() {
@@ -166,20 +217,6 @@ class ListSpecification extends Specification {
 
         expect:
         element == list.remove(list.indexOf(element))
-
-        where:
-        element << listElements
-    }
-
-    def "After removing size decreases"() {
-        setup:
-        list.addAll(listElements)
-
-        when:
-        list.remove(list.indexOf(element))
-
-        then:
-        list.size() == old(list.size()) - 1
 
         where:
         element << listElements
