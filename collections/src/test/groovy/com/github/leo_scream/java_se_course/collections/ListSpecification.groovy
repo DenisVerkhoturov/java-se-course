@@ -267,4 +267,21 @@ class ListSpecification extends Specification {
         expect:
         list.every(array.&contains)
     }
+
+    def "Cleared list is empty even if it was full before"() {
+        given:
+        list.addAll(listElements)
+
+        when:
+        list.clear()
+
+        then:
+        list.isEmpty()
+
+        and:
+        list.size() == 0
+
+        and:
+        list.toArray().size() == 0
+    }
 }

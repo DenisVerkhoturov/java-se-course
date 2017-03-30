@@ -131,22 +131,50 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
+        checkBounds(index);
+        final Node next = nodeBy(index);
+        final Node previous = next.previous;
+        Node node;
+
+        for (T value : c) {
+            node = new Node(previous, value, next);
+            if (previous == null) head = node;
+            else previous.next = node;
+        }
+
+        size += c.size();
+
         return false;
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        boolean isChanged = false;
+        for (Node node = head; node != null; node = node.next) {
+            if (c.contains(node.value)) {
+                remove(node);
+                isChanged = true;
+            }
+        }
+        return isChanged;
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        boolean isChanged = false;
+        for (Node node = head; node != null; node = node.next) {
+            if (!c.contains(node.value)) {
+                remove(node);
+                isChanged = true;
+            }
+        }
+        return isChanged;
     }
 
     @Override
     public void clear() {
-
+        head = tail = null;
+        size = 0;
     }
 
     @Override
@@ -155,20 +183,26 @@ public class LinkedList<T> implements List<T> {
         return nodeBy(index).value;
     }
 
-    private Node nodeBy(int index) {
-        return index < (size / 2)
-            ? head.forward(index)
-            : tail.backward(size - index - 1);
+    @Override
+    public T set(int index, T value) {
+        checkBounds(index);
+        Node node = nodeBy(index);
+        T oldValue = node.value;
+        nodeBy(index).value = value;
+        return oldValue;
     }
 
     @Override
-    public T set(int index, T element) {
-        return null;
-    }
+    public void add(int index, T value) {
+        checkBounds(index);
+        final Node next = nodeBy(index);
+        final Node previous = next.previous;
+        final Node node = new Node(previous, value, next);
 
-    @Override
-    public void add(int index, T element) {
+        if (previous == null) head = node;
+        else previous.next = node;
 
+        size += 1;
     }
 
     @Override
@@ -217,21 +251,92 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public ListIterator<T> listIterator() {
-        return null;
+        return listIterator(0);
     }
 
     @Override
     public ListIterator<T> listIterator(int index) {
-        return null;
+        return new ListIterator<T>() {
+            int current = index;
+
+            @Override
+            public boolean hasNext() {
+                return current != size;
+            }
+
+            @Override
+            public T next() {
+                return nodeBy(current++).value;
+            }
+
+            @Override
+            public boolean hasPrevious() {
+                return current != 0;
+            }
+
+            @Override
+            public T previous() {
+                return nodeBy(current - 1).value;
+            }
+
+            @Override
+            public int nextIndex() {
+                return current + 1;
+            }
+
+            @Override
+            public int previousIndex() {
+                return current - 1;
+            }
+
+            @Override
+            public void remove() {
+                LinkedList.this.remove(nodeBy(current--));
+            }
+
+            @Override
+            public void set(T t) {
+                nodeBy(index).value = t;
+            }
+
+            @Override
+            public void add(T t) {
+                LinkedList.this.add(current++, t);
+            }
+        };
     }
 
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
-        return null;
+        checkBounds(fromIndex);
+        checkBounds(toIndex);
+        checkBounds(toIndex - fromIndex);
+        final LinkedList<T> list = new LinkedList<>();
+        int elementsRemained = toIndex - fromIndex;
+        for (Node node = nodeBy(fromIndex); elementsRemained > 0; elementsRemained--) {
+            list.add(node);
+        }
+        return list;
     }
 
     private void checkBounds(int index) {
         if (index < 0 || index >= size) throw new IndexOutOfBoundsException();
+    }
+
+    private Node nodeBy(int index) {
+        return index < (size / 2)
+            ? head.forward(index)
+            : tail.backward(size - index - 1);
+    }
+
+    private void add(Node node) {
+        final Node tail = this.tail;
+        this.tail = node;
+
+        if (tail == null) head = node;
+        else tail.next = node;
+
+        size += 1;
     }
 
     private T remove(Node node) {
