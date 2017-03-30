@@ -1,9 +1,6 @@
 package com.github.leo_scream.java_se_course.collections;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
@@ -47,17 +44,43 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new Iterator<T>() {
+            int current = 0;
+
+            @Override
+            public boolean hasNext() {
+                return current != size;
+            }
+
+            @Override
+            public T next() {
+                return nodeBy(current++).value;
+            }
+        };
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] array = new Object[size];
+        int index = 0;
+        for (Node node = head; node != null; node = node.next, index++) array[index] = node.value;
+        return array;
     }
 
     @Override
-    public <R> R[] toArray(R[] a) {
-        return null;
+    @SuppressWarnings("unchecked")
+    public <R> R[] toArray(R[] array) {
+        Objects.requireNonNull(array);
+        if (array.length < size) {
+            array = (R[]) java.lang.reflect.Array.newInstance(array.getClass().getComponentType(), size);
+        }
+
+        int index = 0;
+        for (Node node = head; node != null; node = node.next, index++) {
+            array[index] = (R) node.value;
+        }
+
+        return array;
     }
 
     @Override

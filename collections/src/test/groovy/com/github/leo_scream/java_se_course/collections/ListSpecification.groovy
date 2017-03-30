@@ -221,4 +221,50 @@ class ListSpecification extends Specification {
         where:
         element << listElements
     }
+
+    def "Array made from list contains all element"() {
+        setup:
+        list.addAll(listElements)
+
+        expect:
+        list.toArray() == listElements
+    }
+
+    def "toArray throws NullPointerException if passed array is null"() {
+        when:
+        list.toArray(null)
+
+        then:
+        thrown(NullPointerException)
+    }
+
+    def "toArray throws ArrayStoreException if passed array of wrong type"() {
+        given:
+        list.addAll(listElements)
+        Number[] array = new Number[list.size()]
+
+        when:
+        list.toArray(array)
+
+        then:
+        thrown(ArrayStoreException)
+    }
+
+    def "toArray works properly with array of smaller size"() {
+        setup:
+        list.addAll(listElements)
+        String[] array = list.toArray(new String[0])
+
+        expect:
+        list.every(array.&contains)
+    }
+
+    def "toArray returns array of all elements"() {
+        setup:
+        list.addAll(listElements)
+        String[] array = list.toArray(new String[list.size()])
+
+        expect:
+        list.every(array.&contains)
+    }
 }
