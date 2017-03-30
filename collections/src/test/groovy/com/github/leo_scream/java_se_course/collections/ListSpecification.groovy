@@ -11,7 +11,7 @@ class ListSpecification extends Specification {
     private notContainedElement
 
     def setupSpec() {
-        listElements = ["apple", null, "orange", null, "tomato", null, "potato"]
+        listElements = ["apple", null, null, "orange", "tomato", null, "potato"]
         notContainedElement = "planet"
     }
 
@@ -98,6 +98,39 @@ class ListSpecification extends Specification {
 
         expect:
         list.get(list.indexOf(element)) == element
+
+        where:
+        element << listElements
+    }
+
+    def "Last index of null not throws exception"() {
+        setup:
+        list.addAll(listElements)
+
+        when:
+        list.lastIndexOf(null)
+
+        then:
+        notThrown(NullPointerException)
+    }
+
+    def "Last index of element which does not contained in list is -1"() {
+        setup:
+        list.addAll(listElements)
+
+        when:
+        list.lastIndexOf(null)
+
+        then:
+        notThrown(NullPointerException)
+    }
+
+    def "Element can be received by this last index in list"() {
+        setup:
+        list.addAll(listElements)
+
+        expect:
+        list.get(list.lastIndexOf(element)) == element
 
         where:
         element << listElements
