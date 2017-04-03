@@ -41,7 +41,7 @@ abstract class ListSpecification extends Specification {
 
     def "After adding list is not empty and size increases"() {
         when:
-        list.add(element)
+        list.add(element as String)
 
         then:
         list.size() == old(list.size()) + 1
@@ -55,7 +55,7 @@ abstract class ListSpecification extends Specification {
 
     def "List contains element after adding"() {
         when:
-        list.add(element)
+        list.add(element as String)
 
         then:
         list.contains(element)
