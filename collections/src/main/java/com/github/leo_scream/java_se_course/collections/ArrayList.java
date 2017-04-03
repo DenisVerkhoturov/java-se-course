@@ -129,7 +129,14 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        boolean isChanged = false;
+        for (int index = 0; index < size; index++) {
+            if (c.contains(data[index])) {
+                remove(index);
+                isChanged = true;
+            }
+        }
+        return isChanged;
     }
 
     @Override
