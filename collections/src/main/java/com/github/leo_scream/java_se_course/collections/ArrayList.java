@@ -52,12 +52,18 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return Arrays.copyOf(data, size);
     }
 
     @Override
-    public <T1> T1[] toArray(T1[] a) {
-        return null;
+    public <R> R[] toArray(R[] array) {
+        Objects.requireNonNull(array);
+        if (array.length < size) {
+            array = (R[]) Arrays.copyOf(array, size, array.getClass());
+        } else {
+            System.arraycopy(data, 0, array, 0, size);
+        }
+        return array;
     }
 
     @Override
