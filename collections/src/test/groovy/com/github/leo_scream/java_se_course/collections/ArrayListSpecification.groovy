@@ -5,6 +5,6 @@ package com.github.leo_scream.java_se_course.collections
  */
 class ArrayListSpecification extends ListSpecification {
     def setup() {
-        list = new com.github.leo_scream.java_se_course.collections.ArrayList()
+        list = new ArrayList()
     }
 }
