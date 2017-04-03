@@ -46,8 +46,21 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Iterator<T> iterator() {
-        return null;
+        return new Iterator<T>() {
+            private int current = 0;
+
+            @Override
+            public boolean hasNext() {
+                return current != size;
+            }
+
+            @Override
+            public T next() {
+                return (T) data[current++];
+            }
+        };
     }
 
     @Override
@@ -56,10 +69,11 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <R> R[] toArray(R[] array) {
         Objects.requireNonNull(array);
         if (array.length < size) {
-            array = (R[]) Arrays.copyOf(array, size, array.getClass());
+            array = (R[]) Arrays.copyOf(data, size, array.getClass());
         } else {
             System.arraycopy(data, 0, array, 0, size);
         }
@@ -125,7 +139,8 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void clear() {
-
+        data = new Object[0];
+        size = 0;
     }
 
     @Override
