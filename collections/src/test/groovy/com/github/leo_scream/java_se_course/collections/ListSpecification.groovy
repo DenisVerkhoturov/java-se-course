@@ -3,20 +3,16 @@ package com.github.leo_scream.java_se_course.collections
 import spock.lang.Shared
 import spock.lang.Specification
 
-class ListSpecification extends Specification {
-    private List<String> list
+abstract class ListSpecification extends Specification {
+    protected List<String> list
     @Shared
-    private String[] listElements
+    protected String[] listElements
     @Shared
-    private notContainedElement
+    protected notContainedElement
 
     def setupSpec() {
         listElements = ["apple", null, null, "orange", "tomato", null, "potato"]
         notContainedElement = "planet"
-    }
-
-    def setup() {
-        list = new LinkedList()
     }
 
     def "Initialized list is empty and has zero size"() {
