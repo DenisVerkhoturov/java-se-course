@@ -93,12 +93,13 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        return c.stream().allMatch(this::contains);
     }
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+        c.forEach(this::add);
+        return true;
     }
 
     @Override
@@ -123,12 +124,16 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        return null;
+        checkBounds(index);
+        return (T) data[index];
     }
 
     @Override
     public T set(int index, T element) {
-        return null;
+        checkBounds(index);
+        T oldValue = (T) data[index];
+        data[index] = element;
+        return oldValue;
     }
 
     @Override
@@ -138,17 +143,50 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        return null;
+        checkBounds(index);
+        T oldValue = (T) data[index];
+        fastRemove(index);
+        return oldValue;
     }
 
     @Override
-    public int indexOf(Object o) {
-        return 0;
+    public int indexOf(Object needle) {
+        boolean isFound = false;
+        int index = 0;
+        if (needle == null) {
+            while (index < size) {
+                isFound = data[index] == null;
+                if (isFound) break;
+                index += 1;
+            }
+        } else {
+            while (index < size) {
+                isFound = needle.equals(data[index]);
+                if (isFound) break;
+                index += 1;
+            }
+        }
+        return isFound ? index : -1;
     }
 
     @Override
-    public int lastIndexOf(Object o) {
-        return 0;
+    public int lastIndexOf(Object needle) {
+        boolean isFound = false;
+        int index = size - 1;
+        if (needle == null) {
+            while (index >= 0) {
+                isFound = data[index] == null;
+                if (isFound) break;
+                index -= 1;
+            }
+        } else {
+            while (index < size) {
+                isFound = needle.equals(data[index]);
+                if (isFound) break;
+                index -= 1;
+            }
+        }
+        return isFound ? index : -1;
     }
 
     @Override
