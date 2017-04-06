@@ -11,7 +11,7 @@ public class Actor implements Serializable {
     private final String name;
 
     public Actor() {
-        name = new String();
+        name = "";
     }
 
     private Actor(String name) {

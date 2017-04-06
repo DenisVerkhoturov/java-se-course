@@ -15,7 +15,7 @@ public class Movie implements Serializable {
     private final Set<Actor> actors;
 
     public Movie() {
-        name = new String();
+        name = "";
         actors = new HashSet<>();
     }
 

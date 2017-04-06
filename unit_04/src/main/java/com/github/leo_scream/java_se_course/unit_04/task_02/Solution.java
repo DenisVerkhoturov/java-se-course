@@ -67,7 +67,7 @@ public class Solution {
             stream.read(buffer);
             content = new String(buffer);
         }
-        return content.toString();
+        return content;
     }
 
     /**

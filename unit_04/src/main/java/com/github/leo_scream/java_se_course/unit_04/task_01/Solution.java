@@ -70,7 +70,7 @@ public class Solution {
             fileInputStream.read(buffer);
             content = new String(buffer);
         }
-        return content.toString();
+        return content;
     }
 
     /**
