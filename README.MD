@@ -1,5 +1,7 @@
 # Homework: EPAM Java SE course
 [![Build status][travis-image]][travis-url]
+[![Codacy Badge][codacy-image]][codacy-url]
+
 
 ---
 
@@ -24,3 +26,6 @@
 
 [travis-image]: https://travis-ci.org/Leo-Scream/java-se-course.svg?branch=master
 [travis-url]: https://travis-ci.org/Leo-Scream/java-se-course
+
+[codacy-image]: https://api.codacy.com/project/badge/Grade/02e3b253154e46e287f01607ca0fe362
+[codacy-url]: https://www.codacy.com/app/Leo-Scream/java-se-course
