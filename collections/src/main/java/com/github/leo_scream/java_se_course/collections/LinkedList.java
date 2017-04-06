@@ -28,16 +28,9 @@ public class LinkedList<T> implements List<T> {
     @Override
     public boolean contains(Object needle) {
         boolean found = false;
-        if (needle == null) {
-            for (Node node = head; node != null; node = node.next) {
-                found = node.value == null;
-                if (found) break;
-            }
-        } else {
-            for (Node node = head; node != null; node = node.next) {
-                found = needle.equals(node.value);
-                if (found) break;
-            }
+        for (Node node = head; node != null; node = node.next) {
+            found = Objects.equals(node.value, needle);
+            if (found) break;
         }
         return found;
     }
@@ -100,19 +93,11 @@ public class LinkedList<T> implements List<T> {
     @Override
     public boolean remove(Object value) {
         boolean isDeleted = false;
-        if (value == null) {
-            for (Node node = head; node != null; node = node.next) {
-                if (node.value == null) {
-                    remove(node);
-                    isDeleted = true;
-                }
-            }
-        } else {
-            for (Node node = head; node != null; node = node.next) {
-                if (value.equals(node.value)) {
-                    remove(node);
-                    isDeleted = true;
-                }
+        for (Node node = head; node != null; node = node.next) {
+            if (Objects.equals(node.value, value)) {
+                remove(node);
+                isDeleted = true;
+                break;
             }
         }
         return isDeleted;
@@ -215,18 +200,10 @@ public class LinkedList<T> implements List<T> {
     public int indexOf(Object needle) {
         int index = 0;
         boolean isFound = false;
-        if (needle == null) {
-            for (Node node = head; node != null; node = node.next, index++) {
-                isFound = node.value == null;
-                if (isFound) break;
-            }
-        } else {
-            for (Node node = head; node != null; node = node.next, index++) {
-                isFound = needle.equals(node.value);
-                if (isFound) break;
-            }
+        for (Node node = head; node != null; node = node.next, index++) {
+            isFound = Objects.equals(node.value, needle);
+            if (isFound) break;
         }
-
         return isFound ? index : -1;
     }
 
@@ -234,18 +211,10 @@ public class LinkedList<T> implements List<T> {
     public int lastIndexOf(Object needle) {
         int index = size - 1;
         boolean isFound = false;
-        if (needle == null) {
-            for (Node node = tail; node != null; node = node.previous, index--) {
-                isFound = node.value == null;
-                if (isFound) break;
-            }
-        } else {
-            for (Node node = tail; node != null; node = node.previous, index--) {
-                isFound = needle.equals(node.value);
-                if (isFound) break;
-            }
+        for (Node node = tail; node != null; node = node.previous, index--) {
+            isFound = Objects.equals(node.value, needle);
+            if (isFound) break;
         }
-
         return isFound ? index : -1;
     }
 
