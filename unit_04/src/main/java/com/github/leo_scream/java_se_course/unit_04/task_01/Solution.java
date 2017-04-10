@@ -63,7 +63,7 @@ public class Solution {
      * @return Content of file as {@code String}
      * @throws IOException If an I/O error occurs.
      */
-    static String readFileUsingByteStream(File file) throws IOException {
+    public static String readFileUsingByteStream(File file) throws IOException {
         String content;
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
             byte[] buffer = new byte[(int) file.length()];
@@ -76,7 +76,7 @@ public class Solution {
     /**
      * Write {@code String} to {@code File} using {@code java.io.FileInputStream}.
      */
-    static void writeFileUsingByteStream(File file, String content) throws IOException {
+    public static void writeFileUsingByteStream(File file, String content) throws IOException {
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
             fileOutputStream.write(content.getBytes());
         }

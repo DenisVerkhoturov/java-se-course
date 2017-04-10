@@ -17,6 +17,7 @@ public class HashMap<K, V> implements Map<K, V> {
         this(DEFAULT_CAPACITY);
     }
 
+    @SuppressWarnings("unchecked")
     public HashMap(int initialCapacity) {
         buckets = new Bucket[initialCapacity];
     }
@@ -84,11 +85,12 @@ public class HashMap<K, V> implements Map<K, V> {
     }
 
     @Override
-    public void putAll(Map<? extends K, ? extends V> m) {
-
+    public void putAll(Map<? extends K, ? extends V> map) {
+        map.forEach(this::put);
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void clear() {
         buckets = new Bucket[DEFAULT_CAPACITY];
         size = 0;

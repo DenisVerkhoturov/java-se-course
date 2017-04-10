@@ -58,7 +58,7 @@ public class FileEditor {
         );
     }
 
-    void openFile(final File file) {
+    public void openFile(final File file) {
         Tab fileTab = fileTabMap.containsKey(file) ? fileTabMap.get(file) : createTab(file);
         tabPane.getSelectionModel().select(fileTab);
     }

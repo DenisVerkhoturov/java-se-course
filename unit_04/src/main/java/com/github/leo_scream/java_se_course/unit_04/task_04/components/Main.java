@@ -71,7 +71,7 @@ public class Main {
         return (root.getWidth() - padding) * percent;
     }
 
-    GridPane getGridPane() {
+    public GridPane getGridPane() {
         return root;
     }
 }
