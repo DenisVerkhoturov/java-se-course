@@ -21,6 +21,7 @@
 - [Unit 05. Exceptions and Errors](unit_05/)
 - [Unit 06. Generic and Collections](unit_06/)
 - [Unit 07. Multithreading](unit_07/)
+- [Collections](collections/)
 
 ---
 
