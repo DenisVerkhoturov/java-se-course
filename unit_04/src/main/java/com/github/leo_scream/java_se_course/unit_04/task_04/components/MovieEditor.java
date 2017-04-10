@@ -96,7 +96,7 @@ public class MovieEditor {
 
     private boolean isFormValid() {
         boolean validity = true;
-        if (titleTextField.getText() == null && titleTextField.getText().length() == 0) {
+        if (titleTextField.getText() == null || titleTextField.getText().length() == 0) {
             validity = false;
         }
         if (actorsList.getItems().isEmpty()) {
@@ -106,17 +106,17 @@ public class MovieEditor {
         return validity;
     }
 
-    void minimize() {
+    public void minimize() {
         Main.getInstance().getGridPane().setColumnSpan(movieEditor, 1);
         movieEditor.setVisible(false);
     }
 
-    void maximize() {
+    public void maximize() {
         movieEditor.setVisible(true);
         Main.getInstance().getGridPane().setColumnSpan(movieEditor, 3);
     }
 
-    void setMovie(Movie movie) {
+    public void setMovie(Movie movie) {
         this.movie.setValue(movie);
     }
 }

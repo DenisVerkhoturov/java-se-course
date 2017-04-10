@@ -64,16 +64,17 @@ public class LinkedList<T> implements List<T> {
     @SuppressWarnings("unchecked")
     public <R> R[] toArray(R[] array) {
         Objects.requireNonNull(array);
-        if (array.length < size) {
-            array = (R[]) java.lang.reflect.Array.newInstance(array.getClass().getComponentType(), size);
+        R[] results = array;
+        if (results.length < size) {
+            results = (R[]) java.lang.reflect.Array.newInstance(array.getClass().getComponentType(), size);
         }
 
         int index = 0;
         for (Node node = head; node != null; node = node.next, index++) {
-            array[index] = (R) node.value;
+            results[index] = (R) node.value;
         }
 
-        return array;
+        return results;
     }
 
     @Override
@@ -346,20 +347,18 @@ public class LinkedList<T> implements List<T> {
             this.next = next;
         }
 
-        Node forward(int offset) {
+        private Node forward(int offset) {
             Node node = this;
-            while (offset > 0) {
+            for (int i = 0; i < offset; i++) {
                 node = node.next;
-                offset -= 1;
             }
             return node;
         }
 
-        Node backward(int offset) {
+        private Node backward(int offset) {
             Node node = this;
-            while (offset > 0) {
+            for (int i = 0; i < offset; i++) {
                 node = node.previous;
-                offset -= 1;
             }
             return node;
         }

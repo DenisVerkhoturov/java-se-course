@@ -72,12 +72,13 @@ public class ArrayList<T> implements List<T> {
     @SuppressWarnings("unchecked")
     public <R> R[] toArray(R[] array) {
         Objects.requireNonNull(array);
+        R[] results = array;
         if (array.length < size) {
-            array = (R[]) Arrays.copyOf(data, size, array.getClass());
+            results = (R[]) Arrays.copyOf(data, size, array.getClass());
         } else {
-            System.arraycopy(data, 0, array, 0, size);
+            System.arraycopy(data, 0, results, 0, size);
         }
-        return array;
+        return results;
     }
 
     @Override
@@ -166,7 +167,11 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void add(int index, T element) {
-
+        checkBounds(index);
+        ensureCapacity(size + 1);
+        System.arraycopy(data, index, data, index + 1, size - index);
+        data[index] = element;
+        size += 1;
     }
 
     @Override

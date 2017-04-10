@@ -90,7 +90,8 @@ public class HashMap<K, V> implements Map<K, V> {
 
     @Override
     public void clear() {
-
+        buckets = new Bucket[DEFAULT_CAPACITY];
+        size = 0;
     }
 
     @Override
@@ -111,7 +112,7 @@ public class HashMap<K, V> implements Map<K, V> {
     private class Bucket<K, V> {
         private Entry<K, V> head;
 
-        boolean containsKey(K key) {
+        private boolean containsKey(K key) {
             boolean isFound = false;
             for (Entry<K, V> entry = head; entry != null; entry = entry.next) {
                 isFound = Objects.equals(entry.key, key);
@@ -120,7 +121,7 @@ public class HashMap<K, V> implements Map<K, V> {
             return isFound;
         }
 
-        boolean containsValue(V value) {
+        private boolean containsValue(V value) {
             boolean isFound = false;
             for (Entry<K, V> entry = head; entry != null; entry = entry.next) {
                 isFound = Objects.equals(entry.value, value);
@@ -129,7 +130,7 @@ public class HashMap<K, V> implements Map<K, V> {
             return isFound;
         }
 
-        V put(K key, V value) {
+        private V put(K key, V value) {
             V oldValue = null;
             if (head == null) {
                 head = new Entry<>(key, value);
@@ -149,14 +150,14 @@ public class HashMap<K, V> implements Map<K, V> {
             return oldValue;
         }
 
-        V remove(K key) {
+        private V remove(K key) {
             V oldValue = null;
             if (head != null) {
                 Entry<K, V> previous = head;
                 for (Entry<K, V> entry = head; entry != null; entry = entry.next) {
                     if (Objects.equals(entry.key, key)) {
                         oldValue = entry.value;
-                        if (head == entry) {
+                        if (Objects.equals(head, entry)) {
                             head = null;
                         } else {
                             previous.next = entry.next;
