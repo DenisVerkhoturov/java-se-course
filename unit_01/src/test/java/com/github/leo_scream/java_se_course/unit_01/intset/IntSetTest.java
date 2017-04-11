@@ -74,20 +74,10 @@ public class IntSetTest {
             assertFalse(set.contains(value));
         }
 
-        for (int value : values) {
-            set.add(value);
-        }
+        set.add(values);
 
-        unexpected:
-        for (int i = Integer.MIN_VALUE; i != Integer.MAX_VALUE; i++) {
-            for (int expectedValue : values) {
-                if (i == expectedValue) {
-                    assertTrue(set.contains(i));
-                    continue unexpected;
-                }
-            }
-
-            assertFalse(set.contains(i));
+        for (int expectedValue : values) {
+            assertTrue(set.contains(expectedValue));
         }
     }
 

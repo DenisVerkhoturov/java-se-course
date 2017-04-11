@@ -26,7 +26,7 @@ public class IntSet {
      * @param value Value to add
      */
     public void add(final int value) {
-        final int index = (value < 0) ? -(value / 64) : value / 64;
+        final int index = Math.abs(value / 64);
         long[] data = (value < 0) ? negatives : positives;
 
         if (index >= data.length) {
@@ -56,7 +56,7 @@ public class IntSet {
      * @param value Value to remove
      */
     public void remove(final int value) {
-        final int index = (value < 0) ? -(value / 64) : value / 64;
+        final int index = Math.abs(value / 64);
         long[] data = (value < 0) ? negatives : positives;
 
         if (index < data.length) {
@@ -80,7 +80,7 @@ public class IntSet {
      * @return <code>true</code> if value is in set, otherwise <code>false</code>
      */
     public boolean contains(final int value) {
-        final int index = (value < 0) ? -(value / 64) : value / 64;
+        final int index = Math.abs(value / 64);
         final long[] data = (value < 0) ? negatives : positives;
 
         return index < data.length && (data[index] & (1L << value)) != 0;
