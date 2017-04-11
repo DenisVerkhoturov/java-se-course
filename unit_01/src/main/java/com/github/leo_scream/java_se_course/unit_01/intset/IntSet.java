@@ -95,14 +95,8 @@ public class IntSet {
      * set and <code>other</code> set
      */
     public IntSet union(IntSet other) {
-        final int positivesSize = positives.length > other.positives.length
-            ? this.positives.length
-            : other.positives.length;
-        final int negativesSize = negatives.length > other.negatives.length
-            ? this.negatives.length
-            : other.negatives.length;
-        final long[] positives = new long[positivesSize];
-        final long[] negatives = new long[negativesSize];
+        final long[] positives = new long[Math.max(this.positives.length, other.positives.length)];
+        final long[] negatives = new long[Math.max(this.negatives.length, other.negatives.length)];
         long left;
         long right;
 
@@ -129,14 +123,8 @@ public class IntSet {
      * both sets origin and <code>other</code>
      */
     public IntSet intersection(IntSet other) {
-        final int positivesSize = positives.length < other.positives.length
-            ? this.positives.length
-            : other.positives.length;
-        final int negativesSize = negatives.length < other.negatives.length
-            ? this.negatives.length
-            : other.negatives.length;
-        final long[] positives = new long[positivesSize];
-        final long[] negatives = new long[negativesSize];
+        final long[] positives = new long[Math.max(this.positives.length, other.positives.length)];
+        final long[] negatives = new long[Math.max(this.negatives.length, other.negatives.length)];
         long left;
         long right;
 
@@ -163,14 +151,8 @@ public class IntSet {
      * in one of sets nor both together
      */
     public IntSet difference(IntSet other) {
-        final int positivesSize = positives.length > other.positives.length
-            ? this.positives.length
-            : other.positives.length;
-        final int negativesSize = negatives.length > other.negatives.length
-            ? this.negatives.length
-            : other.negatives.length;
-        final long[] positives = new long[positivesSize];
-        final long[] negatives = new long[negativesSize];
+        final long[] positives = new long[Math.max(this.positives.length, other.positives.length)];
+        final long[] negatives = new long[Math.max(this.negatives.length, other.negatives.length)];
         long left;
         long right;
 
