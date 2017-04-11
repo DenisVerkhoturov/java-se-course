@@ -1,5 +1,7 @@
 package com.github.leo_scream.java_se_course.unit_01.intset;
 
+import java.util.function.LongBinaryOperator;
+
 /**
  * @author Denis Verkhoturov, mod.satyr@gmail.com
  */
@@ -95,24 +97,7 @@ public class IntSet {
      * set and <code>other</code> set
      */
     public IntSet union(IntSet other) {
-        final long[] positives = new long[Math.max(this.positives.length, other.positives.length)];
-        final long[] negatives = new long[Math.max(this.negatives.length, other.negatives.length)];
-        long left;
-        long right;
-
-        for (int i = 0; i < positives.length; i++) {
-            left = i < this.positives.length ? this.positives[i] : 0L;
-            right = i < other.positives.length ? other.positives[i] : 0L;
-            positives[i] = left | right;
-        }
-
-        for (int i = 0; i < negatives.length; i++) {
-            left = i < this.negatives.length ? this.negatives[i] : 0L;
-            right = i < other.negatives.length ? other.negatives[i] : 0L;
-            negatives[i] = left | right;
-        }
-
-        return new IntSet(positives, negatives);
+        return zip(other, (left, right) -> left | right);
     }
 
     /**
@@ -123,24 +108,7 @@ public class IntSet {
      * both sets origin and <code>other</code>
      */
     public IntSet intersection(IntSet other) {
-        final long[] positives = new long[Math.max(this.positives.length, other.positives.length)];
-        final long[] negatives = new long[Math.max(this.negatives.length, other.negatives.length)];
-        long left;
-        long right;
-
-        for (int i = 0; i < positives.length; i++) {
-            left = i < this.positives.length ? this.positives[i] : 0L;
-            right = i < other.positives.length ? other.positives[i] : 0L;
-            positives[i] = left & right;
-        }
-
-        for (int i = 0; i < negatives.length; i++) {
-            left = i < this.negatives.length ? this.negatives[i] : 0L;
-            right = i < other.negatives.length ? other.negatives[i] : 0L;
-            negatives[i] = left & right;
-        }
-
-        return new IntSet(positives, negatives);
+        return zip(other, (left, right) -> left & right);
     }
 
     /**
@@ -151,24 +119,7 @@ public class IntSet {
      * in one of sets nor both together
      */
     public IntSet difference(IntSet other) {
-        final long[] positives = new long[Math.max(this.positives.length, other.positives.length)];
-        final long[] negatives = new long[Math.max(this.negatives.length, other.negatives.length)];
-        long left;
-        long right;
-
-        for (int i = 0; i < positives.length; i++) {
-            left = i < this.positives.length ? this.positives[i] : 0L;
-            right = i < other.positives.length ? other.positives[i] : 0L;
-            positives[i] = left ^ right;
-        }
-
-        for (int i = 0; i < negatives.length; i++) {
-            left = i < this.negatives.length ? this.negatives[i] : 0L;
-            right = i < other.negatives.length ? other.negatives[i] : 0L;
-            negatives[i] = left ^ right;
-        }
-
-        return new IntSet(positives, negatives);
+        return zip(other, (left, right) -> left ^ right);
     }
 
     /**
@@ -200,5 +151,31 @@ public class IntSet {
         }
 
         return true;
+    }
+
+    /**
+     * @param other    {@code IntSet} to zip with
+     * @param operator what need to do with every element
+     * @return new {@code IntSet} zipped by passed operator
+     */
+    private IntSet zip(IntSet other, LongBinaryOperator operator) {
+        final long[] positives = new long[Math.max(this.positives.length, other.positives.length)];
+        final long[] negatives = new long[Math.max(this.negatives.length, other.negatives.length)];
+        long left;
+        long right;
+
+        for (int i = 0; i < positives.length; i++) {
+            left = i < this.positives.length ? this.positives[i] : 0L;
+            right = i < other.positives.length ? other.positives[i] : 0L;
+            positives[i] = operator.applyAsLong(left, right);
+        }
+
+        for (int i = 0; i < negatives.length; i++) {
+            left = i < this.negatives.length ? this.negatives[i] : 0L;
+            right = i < other.negatives.length ? other.negatives[i] : 0L;
+            negatives[i] = operator.applyAsLong(left, right);
+        }
+
+        return new IntSet(positives, negatives);
     }
 }
