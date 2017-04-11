@@ -16,7 +16,7 @@ public class Account {
     }
 
     /**
-     * @param value
+     * @param value number to add to balance
      * @throws IllegalArgumentException if passed {@code value} is negative.
      */
     public void increase(final long value) {
@@ -25,7 +25,7 @@ public class Account {
     }
 
     /**
-     * @param value
+     * @param value number to subtract from balance
      * @throws IllegalArgumentException if passed {@code value} is negative.
      */
     public void decrease(final long value) {

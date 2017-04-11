@@ -22,18 +22,15 @@ subprojects {
     }
 }
 
-def exportedProjects = [
-    'unit_01',
-    'unit_02',
-    'unit_03',
-    'unit_04',
-    'unit_05'
-]
-
 task docs(type: Javadoc) {
-    source exportedProjects.collect { project(it).sourceSets.main.allJava }
-    classpath = files(exportedProjects.collect {
-        project(it).sourceSets.main.compileClasspath
-    })
+    group = 'aggregation'
+    description = 'Generates aggregated Javadoc API documentation.'
     destinationDir = file("${buildDir}/javadoc")
+
+    def sourceProjects = subprojects.findAll { it.plugins.hasPlugin('java')}
+
+    source sourceProjects.collect { it.sourceSets.main.allJava }
+    classpath = files(sourceProjects.collect {
+        it.sourceSets.main.runtimeClasspath
+    })
 }
