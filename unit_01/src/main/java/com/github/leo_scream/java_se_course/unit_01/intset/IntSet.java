@@ -1,5 +1,6 @@
 package com.github.leo_scream.java_se_course.unit_01.intset;
 
+import java.util.Arrays;
 import java.util.function.LongBinaryOperator;
 
 /**
@@ -29,14 +30,11 @@ public class IntSet {
         long[] data = (value < 0) ? negatives : positives;
 
         if (index >= data.length) {
-            final long[] copy = new long[index + 1];
-            System.arraycopy(data, 0, copy, 0, data.length);
+            data = Arrays.copyOf(data, index + 1);
             if (value < 0) {
-                negatives = copy;
-                data = copy;
+                negatives = data;
             } else {
-                positives = copy;
-                data = copy;
+                positives = data;
             }
         }
 
