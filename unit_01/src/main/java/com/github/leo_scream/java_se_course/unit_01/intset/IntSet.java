@@ -135,13 +135,11 @@ public class IntSet {
             isSubset = false;
         }
 
-        for (int i = 0; i < this.positives.length; i++) {
-            if (!isSubset) break;
+        for (int i = 0; i < this.positives.length && isSubset; i++) {
             isSubset = isSubset(this.negatives[i], other.negatives[i]);
         }
 
-        for (int i = 0; i < this.negatives.length; i++) {
-            if (!isSubset) break;
+        for (int i = 0; i < this.negatives.length && isSubset; i++) {
             isSubset = isSubset(this.negatives[i], other.negatives[i]);
         }
 
@@ -149,8 +147,8 @@ public class IntSet {
     }
 
     /**
-     * @param subset set of ints int {@code long} representation
-     * @param set    set of ints int {@code long} representation
+     * @param subset set of ints in {@code long} representation
+     * @param set    set of ints in {@code long} representation
      * @return {@code true} if all the ints of {@code subset} is in {@code set}
      */
     private boolean isSubset(final long subset, final long set) {
@@ -163,23 +161,29 @@ public class IntSet {
      * @return new {@code IntSet} zipped by passed operator
      */
     private IntSet zip(IntSet other, LongBinaryOperator operator) {
-        final long[] positives = new long[Math.max(this.positives.length, other.positives.length)];
-        final long[] negatives = new long[Math.max(this.negatives.length, other.negatives.length)];
-        long left;
-        long right;
+        return new IntSet(
+            zip(this.positives, other.positives, operator),
+            zip(this.negatives, other.negatives, operator)
+        );
+    }
 
-        for (int i = 0; i < positives.length; i++) {
-            left = i < this.positives.length ? this.positives[i] : 0L;
-            right = i < other.positives.length ? other.positives[i] : 0L;
-            positives[i] = operator.applyAsLong(left, right);
+    /**
+     * @param left     set of ints in {@code long} representation
+     * @param right    set of ints in {@code long} representation
+     * @param operator what need to do with every element
+     * @return {@code long} array of {@code left} and {@code right} arrays zipped by {@code operator}
+     */
+    private long[] zip(final long[] left, final long[] right, final LongBinaryOperator operator) {
+        final long[] array = new long[Math.max(left.length, right.length)];
+        long leftValue;
+        long rightValue;
+
+        for (int i = 0; i < array.length; i++) {
+            leftValue = i < left.length ? left[i] : 0L;
+            rightValue = i < right.length ? right[i] : 0L;
+            array[i] = operator.applyAsLong(leftValue, rightValue);
         }
 
-        for (int i = 0; i < negatives.length; i++) {
-            left = i < this.negatives.length ? this.negatives[i] : 0L;
-            right = i < other.negatives.length ? other.negatives[i] : 0L;
-            negatives[i] = operator.applyAsLong(left, right);
-        }
-
-        return new IntSet(positives, negatives);
+        return array;
     }
 }
