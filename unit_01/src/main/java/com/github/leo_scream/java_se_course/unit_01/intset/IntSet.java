@@ -129,28 +129,32 @@ public class IntSet {
      * @return Returns <code>true</code> if all the elements of this set is in <code>other</code> set
      */
     public boolean isSubsetOf(IntSet other) {
-        long left;
-        long right;
+        boolean isSubset = true;
+
+        if (this.positives.length > other.positives.length || this.negatives.length > other.negatives.length) {
+            isSubset = false;
+        }
 
         for (int i = 0; i < this.positives.length; i++) {
-            left = i < this.positives.length ? this.positives[i] : 0L;
-            right = i < other.positives.length ? other.positives[i] : 0L;
-
-            if ((left & right) != left) {
-                return false;
-            }
+            if (!isSubset) break;
+            isSubset = isSubset(this.negatives[i], other.negatives[i]);
         }
 
         for (int i = 0; i < this.negatives.length; i++) {
-            left = i < this.negatives.length ? this.negatives[i] : 0L;
-            right = i < other.negatives.length ? other.negatives[i] : 0L;
-
-            if ((left & right) != left) {
-                return false;
-            }
+            if (!isSubset) break;
+            isSubset = isSubset(this.negatives[i], other.negatives[i]);
         }
 
-        return true;
+        return isSubset;
+    }
+
+    /**
+     * @param subset set of ints int {@code long} representation
+     * @param set    set of ints int {@code long} representation
+     * @return {@code true} if all the ints of {@code subset} is in {@code set}
+     */
+    private boolean isSubset(final long subset, final long set) {
+        return (subset & set) == subset;
     }
 
     /**
